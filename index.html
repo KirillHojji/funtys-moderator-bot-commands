@@ -2,9 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Команды бота Funtys</title>
-    <meta name="theme-color" content="#111111">
     <style>
         * {
             margin: 0;
@@ -13,339 +12,284 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f5f5f5;
-            color: #1a1a1a;
-            padding: 24px 16px 48px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            background: #ffffff;
+            color: #1f2328;
             line-height: 1.5;
+            padding: 32px 16px;
         }
 
-        .container {
-            max-width: 1000px;
+        .markdown-body {
+            max-width: 900px;
             margin: 0 auto;
-            background: white;
-            border-radius: 0;
-            box-shadow: none;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 32px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .header h1 {
+        .markdown-body h1 {
             font-size: 2rem;
             font-weight: 600;
-            color: #111;
+            border-bottom: 1px solid #d0d7de;
+            padding-bottom: 0.3em;
+            margin: 24px 0 16px;
+        }
+
+        .markdown-body h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            border-bottom: 1px solid #d0d7de;
+            padding-bottom: 0.3em;
+            margin: 24px 0 16px;
+        }
+
+        .markdown-body h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 24px 0 12px;
+        }
+
+        .markdown-body p {
+            margin-bottom: 16px;
+        }
+
+        .markdown-body ul {
+            padding-left: 2em;
+            margin-bottom: 16px;
+        }
+
+        .markdown-body li {
             margin-bottom: 6px;
         }
 
-        .badge {
-            display: inline-block;
-            background: #eaeaea;
-            border-radius: 20px;
-            padding: 4px 12px;
-            font-size: 0.75rem;
-            color: #333;
-            font-family: monospace;
+        .markdown-body code {
+            font-family: ui-monospace, 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+            font-size: 0.85em;
+            background: #f6f8fa;
+            padding: 0.2em 0.4em;
+            border-radius: 6px;
+            color: #cf222e;
         }
 
-        .section {
-            background: white;
-            margin-bottom: 24px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .section-header {
-            background: #f9f9f9;
-            padding: 12px 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .section-header h2 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #111;
-        }
-
-        .section-content {
-            padding: 12px 20px;
-        }
-
-        .command-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .command-item {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: baseline;
-            gap: 8px 16px;
-            padding: 8px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .command-item:last-child {
-            border-bottom: none;
-        }
-
-        .command {
-            font-family: 'SF Mono', 'Fira Code', monospace;
-            background: #f0f0f0;
-            padding: 3px 8px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            color: #d14;
-            word-break: break-word;
-        }
-
-        .description {
-            color: #2c3e50;
-            font-size: 0.9rem;
-            flex: 1;
-        }
-
-        .note {
-            background: #f9f9f9;
-            padding: 10px 14px;
-            border-left: 3px solid #888;
-            font-size: 0.85rem;
-            color: #444;
-            margin-top: 12px;
-        }
-
-        hr {
+        .markdown-body hr {
             border: none;
-            border-top: 1px solid #eee;
-            margin: 12px 0;
+            border-top: 1px solid #d0d7de;
+            margin: 24px 0;
+        }
+
+        .markdown-body blockquote {
+            padding: 0 1em;
+            color: #57606a;
+            border-left: 0.25em solid #d0d7de;
+            margin: 16px 0;
+        }
+
+        .markdown-body strong {
+            font-weight: 600;
         }
 
         .footer {
-            text-align: center;
-            margin-top: 32px;
+            margin-top: 48px;
             padding-top: 16px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #d0d7de;
             font-size: 0.8rem;
-            color: #666;
+            color: #57606a;
+            text-align: center;
         }
 
         .footer a {
-            color: #0066cc;
+            color: #0969da;
             text-decoration: none;
         }
 
-        @media (max-width: 600px) {
-            body {
-                padding: 16px 12px 32px;
-            }
-            .command {
-                font-size: 0.75rem;
-            }
-            .description {
-                font-size: 0.85rem;
-            }
+        .footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="header">
-        <h1>🤖 Funtys — команды бота</h1>
-        <div class="badge">@funtys_moderator_bot</div>
-    </div>
+<div class="markdown-body">
+    <h1>Команды бота Funtys</h1>
 
-    <div class="section">
-        <div class="section-header"><h2>📌 Основные команды</h2></div>
-        <div class="section-content">
-            <div class="command-list">
-                <div class="command-item"><span class="command">/start</span><span class="description">Запуск бота и основное меню</span></div>
-                <div class="command-item"><span class="command">/help</span><span class="description">Показать все доступные команды</span></div>
-                <div class="command-item"><span class="command">бот</span><span class="description">Проверить статус работы бота и ИИ</span></div>
-                <div class="command-item"><span class="command">/newchat</span><span class="description">Очистить историю чата (в ЛС)</span></div>
-                <div class="command-item"><span class="command">/support</span><span class="description">Связаться с поддержкой</span></div>
-                <div class="command-item"><span class="command">/paysupport</span><span class="description">Поддержка по платежам (донатам)</span></div>
-                <div class="command-item"><span class="command">/donate</span><span class="description">Поддержать бота (звёзды)</span></div>
-                <div class="command-item"><span class="command">/buy</span><span class="description">Меню донатов и ввода промокода</span></div>
-                <div class="command-item"><span class="command">/terms</span><span class="description">Условия использования</span></div>
-                <div class="command-item"><span class="command">/code</span><span class="description">Ввести промокод</span></div>
-                <div class="command-item"><span class="command">/stop</span><span class="description">Выйти из режима поддержки (в ЛС)</span></div>
-            </div>
-        </div>
-    </div>
+    <h2>Основные команды</h2>
+    <ul>
+        <li><code>/start</code> — Запуск бота и основное меню</li>
+        <li><code>/help</code> или <code>помощь</code>, <code>фунтис помощь</code>, <code>фунтыс помощь</code>, <code>команды</code>, <code>фунтис команды</code>, <code>фунтыс команды</code> — Показать все доступные команды и информацию о боте</li>
+        <li><code>бот</code> — Проверить статус работы бота и ИИ</li>
+        <li><code>/newchat</code> или <code>новыйчат</code>, <code>Создать новый чат</code> — Очистить историю чата (в ЛС)</li>
+        <li><code>/support</code> — Связаться с поддержкой</li>
+        <li><code>/paysupport</code> — Связаться с поддержкой по платежам (донатам)</li>
+        <li><code>/donate</code> — Поддержать бота (звёзды)</li>
+        <li><code>/buy</code> — Меню для донатов и ввода промокода</li>
+        <li><code>/terms</code> — Условия использования</li>
+        <li><code>/code</code> — Ввести промокод</li>
+        <li><code>/stop</code> — Выйти из режима поддержки и вернуться к ИИ-общению (в ЛС)</li>
+    </ul>
 
-    <div class="section">
-        <div class="section-header"><h2>ℹ️ Информация и утилиты</h2></div>
-        <div class="section-content">
-            <div class="command-list">
-                <div class="command-item"><span class="command">/info</span><span class="description">Информация о текущем чате (группе)</span></div>
-                <div class="command-item"><span class="command">.инф</span><span class="description">Информация о сообщении (ID, права и т.д.)</span></div>
-                <div class="command-item"><span class="command">/pin /unpin</span><span class="description">Закрепить / открепить сообщение</span></div>
-                <div class="command-item"><span class="command">/translate</span><span class="description">Перевести текст (пример: /translate en Привет)</span></div>
-                <div class="command-item"><span class="command">/poll</span><span class="description">Создать опрос</span></div>
-                <div class="command-item"><span class="command">/weather /погода</span><span class="description">Погода в городе с прогнозом</span></div>
-                <div class="command-item"><span class="command">/time /время</span><span class="description">Точное время в городе</span></div>
-                <div class="command-item"><span class="command">/remind /напомни</span><span class="description">Установить напоминание</span></div>
-            </div>
-        </div>
-    </div>
+    <h2>Информация и утилиты</h2>
+    <ul>
+        <li><code>/info</code> или <code>инфо</code>, <code>фунтис инфо</code>, <code>?чат</code> — Информация о текущем чате (группе)</li>
+        <li><code>.инф</code> или <code>/this_message</code> — Информация о сообщении (ID, отправитель, права и т.д.)</li>
+        <li><code>/pin</code> — Закрепить сообщение (ответом на сообщение)</li>
+        <li><code>/unpin</code> — Открепить последнее закрепленное сообщение</li>
+        <li><code>/translate язык текст</code> — Перевести текст (например, <code>/translate en Привет</code>)</li>
+        <li><code>/poll вопрос | вариант1 | вариант2 | ...</code> — Создать опрос</li>
+        <li><code>/weather город</code> или <code>/погода город</code>, <code>фунтис погода город</code> — Погода в городе (с прогнозом)</li>
+        <li><code>/time город</code> или <code>/время город</code>, <code>фунтис время город</code>, <code>фунтыс время город</code> — Точное время в указанном городе</li>
+        <li><code>/remind время текст</code> или <code>/напомни время текст</code> — Установить напоминание (например, <code>/remind 30м Позвонить маме</code>)</li>
+    </ul>
 
-    <div class="section">
-        <div class="section-header"><h2>📊 Статистика и профиль</h2></div>
-        <div class="section-content">
-            <div class="command-list">
-                <div class="command-item"><span class="command">/stats (кто я)</span><span class="description">Ваша статистика (сообщения, баланс, карма, брак)</span></div>
-                <div class="command-item"><span class="command">ты кто</span><span class="description">Статистика пользователя, на чьё сообщение дан ответ</span></div>
-                <div class="command-item"><span class="command">/top /topchat</span><span class="description">Топ богачей / топ активных пользователей</span></div>
-                <div class="command-item"><span class="command">/name /bio</span><span class="description">Установить отображаемое имя или описание в группе</span></div>
-                <div class="command-item"><span class="command">/delname /delbio</span><span class="description">Удалить имя или описание</span></div>
-                <div class="command-item"><span class="command">/likes /karma /karmatop</span><span class="description">Лайки/дизлайки, карма и топ по карме</span></div>
-                <div class="command-item"><span class="command">/achievements (мои достижения)</span><span class="description">Список ваших достижений</span></div>
-                <div class="command-item"><span class="command">/права</span><span class="description">Ваши права в группе и доступные команды модерации</span></div>
-                <div class="command-item"><span class="command">/mywarns</span><span class="description">Количество ваших предупреждений</span></div>
-            </div>
-        </div>
-    </div>
+    <h2>Статистика и профиль</h2>
+    <ul>
+        <li><code>/stats</code> или <code>стата</code>, <code>кто я</code>, <code>фунтис стата</code>, <code>фунтыс стата</code>, <code>фунтис кто я</code>, <code>фунтыс кто я</code> — Показать вашу статистику (сообщения, баланс, карма, брак и т.д.)</li>
+        <li><code>ты кто</code> или <code>кто ты</code>, <code>фунтис это кто</code>, <code>фунтыс это кто</code> — Статистика пользователя, на чье сообщение дан ответ</li>
+        <li><code>/top</code> или <code>топ</code>, <code>фунтис топ</code> — Топ богачей (глобальный или в текущей группе)</li>
+        <li><code>/topchat</code> или <code>топчат</code>, <code>фунтис топчат</code> — Топ активных пользователей по сообщениям в группе</li>
+        <li><code>/name текст</code> или <code>+имя текст</code>, <code>+ник текст</code> — Установить отображаемое имя в группе</li>
+        <li><code>/bio текст</code> или <code>+био текст</code>, <code>+описание текст</code> — Установить описание профиля в группе</li>
+        <li><code>/delname</code> или <code>-имя</code>, <code>-ник</code> — Удалить отображаемое имя</li>
+        <li><code>/delbio</code> или <code>-био</code>, <code>-описание</code> — Удалить описание профиля</li>
+        <li><code>/likes</code> или <code>лайки</code> — Статистика лайков/дизлайков пользователя</li>
+        <li><code>/karma</code> или <code>карма</code> — Показать свою карму</li>
+        <li><code>/karmatop</code> или <code>карматоп</code> — Топ пользователей по карме</li>
+        <li><code>/achievements</code> или <code>достижения</code>, <code>мои достижения</code>, <code>фунтис достижения</code> — Список своих достижений</li>
+        <li><code>/права</code> или <code>права</code> — Узнать свои права в группе и доступные команды модерации</li>
+        <li><code>/mywarns</code> или <code>мои варны</code>, <code>фунтис мои варны</code> — Количество своих предупреждений</li>
+    </ul>
 
-    <div class="section">
-        <div class="section-header"><h2>🛡️ Модерация группы (требуют прав администратора)</h2></div>
-        <div class="section-content">
-            <div class="command-list">
-                <div class="command-item"><span class="command">/ban, /kick, /unban</span><span class="description">Бан, кик, разбан пользователя</span></div>
-                <div class="command-item"><span class="command">/mute, /unmute (+мут, -мут)</span><span class="description">Мут / размут пользователя</span></div>
-                <div class="command-item"><span class="command">/warn, /unwarn (+варн, -варн)</span><span class="description">Выдать или снять предупреждение</span></div>
-                <div class="command-item"><span class="command">/bans, /mutes, /warns</span><span class="description">Списки активных банов, мутов, предупреждений</span></div>
-                <div class="command-item"><span class="command">/del [N]</span><span class="description">Удалить N последних сообщений или конкретное (ответом)</span></div>
-                <div class="command-item"><span class="command">/addrules, /rules, /deleterules</span><span class="description">Установить, показать или удалить правила группы</span></div>
-                <div class="command-item"><span class="command">/lock, /unlock (-чат, +чат)</span><span class="description">Заблокировать / разблокировать чат для всех</span></div>
-                <div class="command-item"><span class="command">-ссылки, +ссылки</span><span class="description">Включить/отключить проверку подозрительных ссылок</span></div>
-                <div class="command-item"><span class="command">-аимодерация, +аимодерация</span><span class="description">Выключить / включить ИИ-модерацию</span></div>
-                <div class="command-item"><span class="command">-рп, +рп, -жрп, +жрп</span><span class="description">Управление RP командами (обычными и 18+)</span></div>
-                <div class="command-item"><span class="command">/принять, /заявки, /отклонить</span><span class="description">Управление заявками на вступление</span></div>
-                <div class="command-item"><span class="command">/пригласить, /вернуть</span><span class="description">Пригласить в чат или вернуть разбаненного пользователя</span></div>
-                <div class="command-item"><span class="command">/расформировать</span><span class="description">Расформировать чат (только владелец)</span></div>
-            </div>
-        </div>
-    </div>
+    <h2>Модерация группы (требуют прав администратора в группе)</h2>
+    <ul>
+        <li><code>/ban @username [время] [причина]</code> или <code>бан @username [время] [причина]</code> — Забанить пользователя (время: "1ч", "2д", "навсегда")</li>
+        <li><code>/kick @username [причина]</code> или <code>кик @username [причина]</code> — Кикнуть пользователя</li>
+        <li><code>/unban @username</code> или <code>разбан @username</code> — Разбанить пользователя</li>
+        <li><code>/mute @username [время] [причина]</code> или <code>мут @username [время] [причина]</code>, <code>+мут @username...</code> — Замутить пользователя</li>
+        <li><code>/unmute @username</code> или <code>размут @username</code>, <code>-мут @username</code>, <code>говори @username</code> — Размутить пользователя</li>
+        <li><code>/warn @username [причина]</code> или <code>варн @username [причина]</code>, <code>+варн @username...</code>, <code>пред @username</code> — Выдать предупреждение</li>
+        <li><code>/unwarn @username</code> или <code>снять варн @username</code>, <code>-варн @username</code>, <code>разварн @username</code> — Снять предупреждение</li>
+        <li><code>/bans</code> или <code>баны</code>, <code>фунтис баны</code> — Список активных банов в группе</li>
+        <li><code>/mutes</code> или <code>муты</code>, <code>фунтис муты</code> — Список активных мутов в группе</li>
+        <li><code>/warns</code> или <code>варны</code>, <code>преды</code>, <code>фунтис варны</code> — Список всех предупреждений в группе</li>
+        <li><code>/del [N]</code> или <code>удалить [N]</code>, <code>фунтис удалить</code> — Удалить N последних сообщений или конкретное (ответом)</li>
+        <li><code>/addrules</code> или <code>+правила</code> — Установить правила для группы (для ИИ-модерации)</li>
+        <li><code>/rules</code> или <code>правила</code>, <code>фунтис правила</code> — Показать правила группы</li>
+        <li><code>/deleterules</code> или <code>-правила</code>, <code>/удалитьправила</code> — Удалить правила группы</li>
+        <li><code>/lock</code> или <code>-чат</code> — Заблокировать чат (запретить отправку сообщений всем, кроме админов)</li>
+        <li><code>/unlock</code> или <code>+чат</code> — Разблокировать чат</li>
+        <li><code>-ссылки</code> — Включить проверку подозрительных ссылок (будут блокироваться)</li>
+        <li><code>+ссылки</code> — Отключить проверку ссылок</li>
+        <li><code>-аимодерация</code> или <code>/disable_ai_moderation</code> — Выключить ИИ-модерацию</li>
+        <li><code>+аимодерация</code> или <code>/enable_ai_moderation</code> — Включить ИИ-модерацию</li>
+        <li><code>статусаимодерации</code> или <code>/ai_moderation_status</code> — Статус ИИ-модерации</li>
+        <li><code>-рп</code> или <code>/disable_rp</code> — Отключить обычные RP команды</li>
+        <li><code>+рп</code> или <code>/enable_rp</code> — Включить обычные RP команды</li>
+        <li><code>-жрп</code> или <code>/disable_hard_rp</code> — Отключить жесткие RP команды (18+)</li>
+        <li><code>+жрп</code> или <code>/enable_hard_rp</code> — Включить жесткие RP команды (18+)</li>
+        <li><code>статусрп</code> или <code>/rp_status</code> — Статус RP команд</li>
+        <li><code>/принять [@username/ID]</code> — Принять заявки на вступление в группу</li>
+        <li><code>/заявки</code> — Список ожидающих заявок</li>
+        <li><code>/отклонить [@username/ID]</code> — Отклонить заявки</li>
+        <li><code>/пригласить @username</code> — Отправить пользователю приглашение в группу в ЛС</li>
+        <li><code>/вернуть @username</code> — Разбанить пользователя и отправить приглашение</li>
+        <li><code>/расформировать</code> — Расформировать чат (доступно только владельцу группы)</li>
+    </ul>
 
-    <div class="section">
-        <div class="section-header"><h2>👥 Управление чатом (общее)</h2></div>
-        <div class="section-content">
-            <div class="command-list">
-                <div class="command-item"><span class="command">/participants (/участники)</span><span class="description">Список записанных участников группы</span></div>
-                <div class="command-item"><span class="command">Свести пару / Создать брак</span><span class="description">Создать брак в чате (требуются права администратора)</span></div>
-                <div class="command-item"><span class="command">Развести пару / Удалить брак</span><span class="description">Удалить брак в чате (требуются права администратора)</span></div>
-                <div class="command-item"><span class="command">наградить (+достижение)</span><span class="description">Выдать достижение пользователю (требуются права администратора)</span></div>
-                <div class="command-item"><span class="command">удалить достижение (-достижение)</span><span class="description">Удалить достижение у пользователя (требуются права администратора)</span></div>
-            </div>
-        </div>
-    </div>
+    <h2>Управление чатом (общее)</h2>
+    <ul>
+        <li><code>/participants</code> или <code>/участники</code> — Список записанных участников группы</li>
+        <li><code>Свести пару @user1 @user2</code> или <code>Создать брак @user1 @user2</code>, <code>поженить пару</code> — Создать брак в чате (требуются права администратора)</li>
+        <li><code>Развести пару @user1 @user2</code> или <code>Удалить брак @user1 @user2</code> — Удалить брак в чате (требуются права администратора)</li>
+        <li><code>наградить @username</code> или <code>+достижение @username</code>, <code>добавить достижение</code> — Выдать достижение пользователю (требуются права администратора)</li>
+        <li><code>удалить достижение @username</code> или <code>-достижение @username</code> — Удалить достижение у пользователя (требуются права администратора)</li>
+    </ul>
 
-    <div class="section">
-        <div class="section-header"><h2>🤝 Социальные взаимодействия (RP)</h2></div>
-        <div class="section-content">
-            <div class="command-list">
-                <div class="command-item"><span class="command">обнять</span><span class="description">Обнять цель</span></div>
-                <div class="command-item"><span class="command">поцеловать, чмокнуть</span><span class="description">Поцеловать цель</span></div>
-                <div class="command-item"><span class="command">погладить</span><span class="description">Погладить цель</span></div>
-                <div class="command-item"><span class="command">взять за руку, пожать руку</span><span class="description">Взятие за руку или рукопожатие</span></div>
-                <div class="command-item"><span class="command">бухнуть / напиться</span><span class="description">Принять алкогольный напиток</span></div>
-                <div class="command-item"><span class="command">плюнуть, ущипнуть, шлёпнуть</span><span class="description">Действия с элементом хулиганства</span></div>
-                <div class="command-item"><span class="command">побрить / подстричь налысо</span><span class="description">Радикальная смена имиджа</span></div>
-                <div class="command-item"><span class="command">извиниться, толкнуть, облизнуть</span><span class="description">Прочие RP‑действия</span></div>
-                <div class="command-item"><span class="command">+ / -</span><span class="description">Поставить лайк (ответом) или дизлайк</span></div>
-            </div>
-            <div class="note">⚠️ Жёсткие РП-команды (ударить, пнуть, избить, убить, трахнуть, отсосать и т.п.) были убраны из соображений безопасности пользователей.</div>
-        </div>
-    </div>
+    <h2>Социальные взаимодействия (RP)</h2>
+    <p><em>(В группах могут быть отключены через <code>-рп</code> или <code>-жрп</code>)</em></p>
+    <ul>
+        <li><code>обнять [цель]</code> — Обнять цель</li>
+        <li><code>поцеловать [цель]</code>, <code>чмокнуть [цель]</code>, <code>чмок [цель]</code> — Поцеловать цель</li>
+        <li><code>погладить [цель]</code> — Погладить цель</li>
+        <li><code>взять за руку [цель]</code> — Взять за руку</li>
+        <li><code>пожать руку [цель]</code> — Пожать руку</li>
+        <li><code>бухнуть</code> или <code>напиться</code> — Принять алкогольный напиток</li>
+        <li><code>плюнуть [цель]</code>, <code>харкнуть [цель]</code> — Плюнуть в цель</li>
+        <li><code>ущипнуть [цель]</code> — Ущипнуть цель</li>
+        <li><code>шлёпнуть [цель]</code> — Шлёпнуть цель</li>
+        <li><code>побрить [цель]</code> или <code>подстричь налысо [цель]</code> — Побрить цель</li>
+        <li><code>извиниться [цель]</code> — Извиниться перед целью</li>
+        <li><code>толкнуть [цель]</code> — Толкнуть цель</li>
+        <li><code>облизнуть [цель]</code> — Облизнуть цель</li>
+        <li><code>+</code> — Поставить лайк (ответом на сообщение)</li>
+        <li><code>-</code> — Поставить дизлайк (ответом на сообщение)</li>
+    </ul>
+    <blockquote>
+        <p>⚠️ Жёсткие РП-команды были убраны из этого списка из соображений безопасности пользователей.</p>
+    </blockquote>
 
-    <div class="section">
-        <div class="section-header"><h2>💰 Экономика и развлечения</h2></div>
-        <div class="section-content">
-            <div class="command-list">
-                <div class="command-item"><span class="command">/balance (/баланс)</span><span class="description">Показать баланс монет</span></div>
-                <div class="command-item"><span class="command">/daily (/ежедневно)</span><span class="description">Ежедневный бонус (требуется подписка на канал)</span></div>
-                <div class="command-item"><span class="command">/transfer (перевод)</span><span class="description">Перевод монет другому пользователю</span></div>
-                <div class="command-item"><span class="command">/casino, /roulette, /dice</span><span class="description">Казино, рулетка, кости (ставки)</span></div>
-                <div class="command-item"><span class="command">работать</span><span class="description">Заработать монеты в мини-игре</span></div>
-            </div>
-        </div>
-    </div>
+    <h2>Экономика и развлечения</h2>
+    <ul>
+        <li><code>/balance</code> или <code>/баланс</code>, <code>мой баланс</code>, <code>фунтис баланс</code> — Баланс монет</li>
+        <li><code>/daily</code> или <code>/ежедневно</code>, <code>фунтис ежедневно</code> — Ежедневный бонус (требуется подписка на канал)</li>
+        <li><code>/transfer @username сумма</code> или <code>перевод @username сумма</code> — Перевод денег</li>
+        <li><code>/casino сумма</code> или <code>казино сумма</code>, <code>фунтис казино сумма</code> — Казино (ставка от 100 до 10000, кулдаун 10 мин)</li>
+        <li><code>/roulette сумма цвет/число</code> или <code>рулетка сумма цвет/число</code> — Рулетка</li>
+        <li><code>/dice сумма число</code> или <code>кубик сумма число</code> — Кинуть кубик (ставка на число от 1 до 6)</li>
+        <li><code>работать</code> или <code>/работать</code> — Заработать монеты в мини-игре</li>
+    </ul>
 
-    <div class="section">
-        <div class="section-header"><h2>🏎️ Автомобили (Racing)</h2></div>
-        <div class="section-content">
-            <div class="command-list">
-                <div class="command-item"><span class="command">/машины</span><span class="description">Показать список ваших автомобилей</span></div>
-                <div class="command-item"><span class="command">/выбитьмашину</span><span class="description">Получить новый автомобиль (раз в день)</span></div>
-                <div class="command-item"><span class="command">/выбратьмашину_ID</span><span class="description">Выбрать основной автомобиль</span></div>
-                <div class="command-item"><span class="command">/улучшитьмашину</span><span class="description">Улучшить выбранный автомобиль (раз в час)</span></div>
-                <div class="command-item"><span class="command">/коллекция, /автоклассы</span><span class="description">Статистика коллекции и классы авто</span></div>
-                <div class="command-item"><span class="command">/продатьмашину_ID</span><span class="description">Продать автомобиль</span></div>
-                <div class="command-item"><span class="command">/гонка [сумма]</span><span class="description">Вызвать на гонку в группе (со ставкой)</span></div>
-            </div>
-        </div>
-    </div>
+    <h2>Автомобили (Racing)</h2>
+    <ul>
+        <li><code>/машины</code> или <code>машины</code>, <code>фунтис машины</code> — Показать список ваших автомобилей</li>
+        <li><code>/выбитьмашину</code> или <code>выбитьмашину</code>, <code>фунтис выбитьмашину</code> — Получить новый автомобиль (раз в день)</li>
+        <li><code>/выбратьмашину_ID</code> — Выбрать конкретный автомобиль как основной</li>
+        <li><code>/улучшитьмашину</code> или <code>улучшитьмашину</code>, <code>фунтис улучшитьмашину</code> — Улучшить выбранный автомобиль (раз в час)</li>
+        <li><code>/коллекция</code> или <code>коллекция</code> — Статистика вашей коллекции автомобилей</li>
+        <li><code>/автоклассы</code> или <code>автоклассы</code> — Информация о классах автомобилей</li>
+        <li><code>/продатьмашину_ID</code> — Продать указанный автомобиль</li>
+        <li><code>/гонка [сумма]</code> или <code>гонка [сумма]</code> — Вызвать на гонку в группе (можно с ставкой)</li>
+    </ul>
 
-    <div class="section">
-        <div class="section-header"><h2>👨‍👩‍👧 Семья и дети</h2></div>
-        <div class="section-content">
-            <div class="command-list">
-                <div class="command-item"><span class="command">мои дети, дети</span><span class="description">Список ваших детей или всех детей в группе</span></div>
-                <div class="command-item"><span class="command">сдать в детдом / избавиться</span><span class="description">Сдать ребёнка за монеты</span></div>
-                <div class="command-item"><span class="command">/propose (брак, +брак)</span><span class="description">Предложить брак</span></div>
-                <div class="command-item"><span class="command">/divorce (развод, -брак)</span><span class="description">Расторгнуть брак</span></div>
-                <div class="command-item"><span class="command">/family (семья, мой брак)</span><span class="description">Информация о браке</span></div>
-                <div class="command-item"><span class="command">/браки</span><span class="description">Список всех браков в группе</span></div>
-            </div>
-        </div>
-    </div>
+    <h2>Семья и дети</h2>
+    <ul>
+        <li><code>мои дети</code> или <code>/my_children</code> — Список ваших детей в текущей группе</li>
+        <li><code>дети</code> или <code>/children</code> — Список всех детей в группе (с пагинацией)</li>
+        <li><code>сдать в детдом</code> или <code>избавиться</code> — Сдать ребенка в детдом за монеты</li>
+        <li><code>/propose @username</code> или <code>брак @username</code>, <code>+брак @username</code> — Предложить брак пользователю</li>
+        <li><code>/divorce</code> или <code>развод</code>, <code>-брак</code> — Расторгнуть брак</li>
+        <li><code>/family</code> или <code>семья</code>, <code>мой брак</code> — Показать информацию о своем браке</li>
+        <li><code>/браки</code> или <code>браки</code> — Список всех браков в группе</li>
+    </ul>
 
-    <div class="section">
-        <div class="section-header"><h2>🎲 Игры и интерактив</h2></div>
-        <div class="section-content">
-            <div class="command-list">
-                <div class="command-item"><span class="command">/ship (шипперим)</span><span class="description">Свести двух случайных пользователей</span></div>
-                <div class="command-item"><span class="command">/who (Фунтис кто...)</span><span class="description">Приписать фразу случайному пользователю</span></div>
-                <div class="command-item"><span class="command">Фунтис когда / шанс</span><span class="description">Предсказать дату или случайный шанс события</span></div>
-                <div class="command-item"><span class="command">/random (/рандом)</span><span class="description">Случайный факт о случайном пользователе</span></div>
-                <div class="command-item"><span class="command">/compliment</span><span class="description">Сделать комплимент</span></div>
-                <div class="command-item"><span class="command">/truth, /dare, /joke, /fact, /quiz</span><span class="description">Правда/действие, шутка, факт, викторина</span></div>
-                <div class="command-item"><span class="command">/rps (/кнб)</span><span class="description">Камень‑ножницы‑бумага</span></div>
-            </div>
-        </div>
-    </div>
+    <h2>Игры и интерактив</h2>
+    <ul>
+        <li><code>/ship</code> или <code>шипперим</code> — "Свести" двух случайных пользователей в группе</li>
+        <li><code>/who фраза</code> или <code>/фунтискто</code>, <code>Фунтис кто фраза</code> — Приписать фразу случайному пользователю ("Кто...")</li>
+        <li><code>Фунтис когда фраза</code> или <code>фунтыс когда фраза</code> — Предсказать дату события</li>
+        <li><code>Фунтис шанс фраза</code> или <code>фунтыс шанс фраза</code>, <code>.инфа фраза</code> — Рандомный шанс события</li>
+        <li><code>/random</code> или <code>/рандом</code> — Случайный факт о случайном пользователе</li>
+        <li><code>/compliment @username</code> или <code>комплимент @username</code> — Сделать комплимент</li>
+        <li><code>/truth</code> или <code>правда [тема]</code> — Задать вопрос "правда" для игры</li>
+        <li><code>/dare</code> или <code>действие [тема]</code> — Предложить "действие" для игры</li>
+        <li><code>/joke</code> или <code>шутка [тема]</code> — Рассказать шутку</li>
+        <li><code>/fact</code> или <code>факт [тема]</code> — Интересный факт</li>
+        <li><code>/quiz [тема]</code> или <code>викторина [тема]</code> — Сгенерировать вопрос для викторины</li>
+        <li><code>/rps камень/ножницы/бумага</code> или <code>/кнб</code> — Камень-Ножницы-Бумага</li>
+    </ul>
 
-    <div class="section">
-        <div class="section-header"><h2>⚔️ Дуэли</h2></div>
-        <div class="section-content">
-            <div class="command-list">
-                <div class="command-item"><span class="command">/дуэль @username</span><span class="description">Вызвать пользователя на дуэль</span></div>
-                <div class="command-item"><span class="command">/дуэлистата</span><span class="description">Статистика ваших дуэлей</span></div>
-            </div>
-        </div>
-    </div>
+    <h2>Дуэли</h2>
+    <ul>
+        <li><code>/дуэль @username</code> — Вызвать пользователя на дуэль</li>
+        <li><code>/дуэлистата</code> — Статистика ваших дуэлей</li>
+    </ul>
 
-    <div class="section">
-        <div class="section-header"><h2>✨ Inline-режим</h2></div>
-        <div class="section-content">
-            <div class="command-list">
-                <div class="command-item"><span class="command">@funtys_moderator_bot [текст]</span><span class="description">Сгенерировать текст на любую тему</span></div>
-                <div class="command-item"><span class="command">@funtys_moderator_bot рп [команда]</span><span class="description">Отправить предложение RP-действия (например, «рп обнять»)</span></div>
-            </div>
-        </div>
-    </div>
+    <h2>Inline-режим</h2>
+    <ul>
+        <li><code>@funtys_moderator_bot [текст]</code> — Сгенерировать текст на любую тему</li>
+        <li><code>@funtys_moderator_bot рп [команда]</code> — Отправить предложение RP-действия (например, <code>@funtys_moderator_bot рп обнять</code>)</li>
+    </ul>
 
+    <hr>
     <div class="footer">
         📢 Канал: <a href="https://t.me/fulias_team" target="_blank">@fulias_team</a><br>
-        🛠️ Связь: /support<br>
-        🤖 Бот: @funtys_moderator_bot
+        🛠️ Поддержка: <code>/support</code><br>
+        🤖 Актуальная версия бота: <strong>@funtys_moderator_bot</strong>
     </div>
 </div>
 </body>
-                                                                                                                                                                          </html>
+</html>
