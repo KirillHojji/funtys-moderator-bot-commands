@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Команды бота Funtys 🤖</title>
+    <meta name="theme-color" content="#1e2c3a">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #0a0f14;
+            color: #e6edf3;
+            padding: 20px 16px 60px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #2d3e4f;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, #6ee7ff, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #1e2c3a;
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            color: #7f8fa4;
+            margin-top: 8px;
+        }
+
+        .section {
+            background: #141b24;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            overflow: hidden;
+            border: 1px solid #253544;
+        }
+
+        .section-header {
+            background: #1a2530;
+            padding: 14px 20px;
+            border-bottom: 1px solid #2d3e4f;
+        }
+
+        .section-header h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #6ee7ff;
+        }
+
+        .section-content {
+            padding: 16px 20px;
+        }
+
+        .command-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .command-item {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 8px 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid #25303d;
+        }
+
+        .command-item:last-child {
+            border-bottom: none;
+        }
+
+        .command {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            background: #0d131a;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: #ffd966;
+            word-break: break-word;
+        }
+
+        .description {
+            color: #b4c4da;
+            font-size: 0.9rem;
+            flex: 1;
+        }
+
+        .note {
+            background: #0d131a;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: #8b9cbb;
+            font-style: italic;
+            margin-top: 8px;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: #253544;
+            margin: 16px 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #1e2c3a;
+            font-size: 0.8rem;
+            color: #5d7290;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 16px 12px 40px;
+            }
+            .command {
+                font-size: 0.75rem;
+                padding: 3px 8px;
+            }
+            .description {
+                font-size: 0.85rem;
+            }
+            .section-header h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🤖 Funtys — команды бота</h1>
+        <div class="badge">@funtys_moderator_bot</div>
+    </div>
+
+    <div class="section">
+        <div class="section-header"><h2>📌 Основные команды</h2></div>
+        <div class="section-content">
+            <div class="command-list">
+                <div class="command-item"><span class="command">/start</span><span class="description">Запуск бота и основное меню</span></div>
+                <div class="command-item"><span class="command">/help</span><span class="description">Показать все доступные команды</span></div>
+                <div class="command-item"><span class="command">бот</span><span class="description">Проверить статус работы бота и ИИ</span></div>
+                <div class="command-item"><span class="command">/newchat</span><span class="description">Очистить историю чата (в ЛС)</span></div>
+                <div class="command-item"><span class="command">/support</span><span class="description">Связаться с поддержкой</span></div>
+                <div class="command-item"><span class="command">/paysupport</span><span class="description">Поддержка по платежам (донатам)</span></div>
+                <div class="command-item"><span class="command">/donate</span><span class="description">Поддержать бота (звёзды)</span></div>
+                <div class="command-item"><span class="command">/buy</span><span class="description">Меню донатов и ввода промокода</span></div>
+                <div class="command-item"><span class="command">/terms</span><span class="description">Условия использования</span></div>
+                <div class="command-item"><span class="command">/code</span><span class="description">Ввести промокод</span></div>
+                <div class="command-item"><span class="command">/stop</span><span class="description">Выйти из режима поддержки (в ЛС)</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header"><h2>ℹ️ Информация и утилиты</h2></div>
+        <div class="section-content">
+            <div class="command-list">
+                <div class="command-item"><span class="command">/info</span><span class="description">Информация о текущем чате (группе)</span></div>
+                <div class="command-item"><span class="command">.инф</span><span class="description">Информация о сообщении (ID, права и т.д.)</span></div>
+                <div class="command-item"><span class="command">/pin /unpin</span><span class="description">Закрепить / открепить сообщение</span></div>
+                <div class="command-item"><span class="command">/translate</span><span class="description">Перевести текст (пример: /translate en Привет)</span></div>
+                <div class="command-item"><span class="command">/poll</span><span class="description">Создать опрос</span></div>
+                <div class="command-item"><span class="command">/weather /погода</span><span class="description">Погода в городе с прогнозом</span></div>
+                <div class="command-item"><span class="command">/time /время</span><span class="description">Точное время в городе</span></div>
+                <div class="command-item"><span class="command">/remind /напомни</span><span class="description">Установить напоминание</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header"><h2>📊 Статистика и профиль</h2></div>
+        <div class="section-content">
+            <div class="command-list">
+                <div class="command-item"><span class="command">/stats (кто я)</span><span class="description">Ваша статистика (сообщения, баланс, карма, брак)</span></div>
+                <div class="command-item"><span class="command">ты кто</span><span class="description">Статистика пользователя, на чьё сообщение дан ответ</span></div>
+                <div class="command-item"><span class="command">/top /topchat</span><span class="description">Топ богачей / топ активных пользователей</span></div>
+                <div class="command-item"><span class="command">/name /bio</span><span class="description">Установить отображаемое имя или описание в группе</span></div>
+                <div class="command-item"><span class="command">/delname /delbio</span><span class="description">Удалить имя или описание</span></div>
+                <div class="command-item"><span class="command">/likes /karma /karmatop</span><span class="description">Лайки/дизлайки, карма и топ по карме</span></div>
+                <div class="command-item"><span class="command">/achievements (мои достижения)</span><span class="description">Список ваших достижений</span></div>
+                <div class="command-item"><span class="command">/права</span><span class="description">Ваши права в группе и доступные команды модерации</span></div>
+                <div class="command-item"><span class="command">/mywarns</span><span class="description">Количество ваших предупреждений</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header"><h2>🛡️ Модерация группы (требуют прав администратора)</h2></div>
+        <div class="section-content">
+            <div class="command-list">
+                <div class="command-item"><span class="command">/ban, /kick, /unban</span><span class="description">Бан, кик, разбан пользователя</span></div>
+                <div class="command-item"><span class="command">/mute, /unmute (+мут, -мут)</span><span class="description">Мут / размут пользователя</span></div>
+                <div class="command-item"><span class="command">/warn, /unwarn (+варн, -варн)</span><span class="description">Выдать или снять предупреждение</span></div>
+                <div class="command-item"><span class="command">/bans, /mutes, /warns</span><span class="description">Списки активных банов, мутов, предупреждений</span></div>
+                <div class="command-item"><span class="command">/del [N]</span><span class="description">Удалить N последних сообщений или конкретное (ответом)</span></div>
+                <div class="command-item"><span class="command">/addrules, /rules, /deleterules</span><span class="description">Установить, показать или удалить правила группы</span></div>
+                <div class="command-item"><span class="command">/lock, /unlock (-чат, +чат)</span><span class="description">Заблокировать / разблокировать чат для всех</span></div>
+                <div class="command-item"><span class="command">-ссылки, +ссылки</span><span class="description">Включить/отключить проверку подозрительных ссылок</span></div>
+                <div class="command-item"><span class="command">-аимодерация, +аимодерация</span><span class="description">Выключить / включить ИИ-модерацию</span></div>
+                <div class="command-item"><span class="command">-рп, +рп, -жрп, +жрп</span><span class="description">Управление RP командами (обычными и 18+)</span></div>
+                <div class="command-item"><span class="command">/принять, /заявки, /отклонить</span><span class="description">Управление заявками на вступление</span></div>
+                <div class="command-item"><span class="command">/пригласить, /вернуть</span><span class="description">Пригласить в чат или вернуть разбаненного пользователя</span></div>
+                <div class="command-item"><span class="command">/расформировать</span><span class="description">Расформировать чат (только владелец)</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header"><h2>👥 Управление чатом (общее)</h2></div>
+        <div class="section-content">
+            <div class="command-list">
+                <div class="command-item"><span class="command">/participants (/участники)</span><span class="description">Список записанных участников группы</span></div>
+                <div class="command-item"><span class="command">Свести пару / Создать брак</span><span class="description">Создать брак в чате (требуются права администратора)</span></div>
+                <div class="command-item"><span class="command">Развести пару / Удалить брак</span><span class="description">Удалить брак в чате (требуются права администратора)</span></div>
+                <div class="command-item"><span class="command">наградить (+достижение)</span><span class="description">Выдать достижение пользователю (требуются права администратора)</span></div>
+                <div class="command-item"><span class="command">удалить достижение (-достижение)</span><span class="description">Удалить достижение у пользователя (требуются права администратора)</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header"><h2>🤝 Социальные взаимодействия (RP)</h2></div>
+        <div class="section-content">
+            <div class="command-list">
+                <div class="command-item"><span class="command">обнять</span><span class="description">Обнять цель</span></div>
+                <div class="command-item"><span class="command">поцеловать, чмокнуть</span><span class="description">Поцеловать цель</span></div>
+                <div class="command-item"><span class="command">погладить</span><span class="description">Погладить цель</span></div>
+                <div class="command-item"><span class="command">взять за руку, пожать руку</span><span class="description">Взятие за руку или рукопожатие</span></div>
+                <div class="command-item"><span class="command">бухнуть / напиться</span><span class="description">Принять алкогольный напиток</span></div>
+                <div class="command-item"><span class="command">плюнуть, ущипнуть, шлёпнуть</span><span class="description">Действия с элементом хулиганства</span></div>
+                <div class="command-item"><span class="command">побрить / подстричь налысо</span><span class="description">Радикальная смена имиджа</span></div>
+                <div class="command-item"><span class="command">извиниться, толкнуть, облизнуть</span><span class="description">Прочие RP‑действия</span></div>
+                <div class="command-item"><span class="command">+ / -</span><span class="description">Поставить лайк (ответом) или дизлайк</span></div>
+            </div>
+            <div class="note">⚠️ Жёсткие РП-команды (ударить, пнуть, избить, убить, трахнуть, отсосать и т.п.) были убраны из этого списка из соображений безопасности пользователей.</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header"><h2>💰 Экономика и развлечения</h2></div>
+        <div class="section-content">
+            <div class="command-list">
+                <div class="command-item"><span class="command">/balance (/баланс)</span><span class="description">Показать баланс монет</span></div>
+                <div class="command-item"><span class="command">/daily (/ежедневно)</span><span class="description">Ежедневный бонус (требуется подписка на канал)</span></div>
+                <div class="command-item"><span class="command">/transfer (перевод)</span><span class="description">Перевод монет другому пользователю</span></div>
+                <div class="command-item"><span class="command">/casino, /roulette, /dice</span><span class="description">Казино, рулетка, кости (ставки)</span></div>
+                <div class="command-item"><span class="command">работать</span><span class="description">Заработать монеты в мини-игре</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header"><h2>🏎️ Автомобили (Racing)</h2></div>
+        <div class="section-content">
+            <div class="command-list">
+                <div class="command-item"><span class="command">/машины</span><span class="description">Показать список ваших автомобилей</span></div>
+                <div class="command-item"><span class="command">/выбитьмашину</span><span class="description">Получить новый автомобиль (раз в день)</span></div>
+                <div class="command-item"><span class="command">/выбратьмашину_ID</span><span class="description">Выбрать основной автомобиль</span></div>
+                <div class="command-item"><span class="command">/улучшитьмашину</span><span class="description">Улучшить выбранный автомобиль (раз в час)</span></div>
+                <div class="command-item"><span class="command">/коллекция, /автоклассы</span><span class="description">Статистика коллекции и классы авто</span></div>
+                <div class="command-item"><span class="command">/продатьмашину_ID</span><span class="description">Продать автомобиль</span></div>
+                <div class="command-item"><span class="command">/гонка [сумма]</span><span class="description">Вызвать на гонку в группе (со ставкой)</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header"><h2>👨‍👩‍👧 Семья и дети</h2></div>
+        <div class="section-content">
+            <div class="command-list">
+                <div class="command-item"><span class="command">мои дети, дети</span><span class="description">Список ваших детей или всех детей в группе</span></div>
+                <div class="command-item"><span class="command">сдать в детдом / избавиться</span><span class="description">Сдать ребёнка за монеты</span></div>
+                <div class="command-item"><span class="command">/propose (брак, +брак)</span><span class="description">Предложить брак</span></div>
+                <div class="command-item"><span class="command">/divorce (развод, -брак)</span><span class="description">Расторгнуть брак</span></div>
+                <div class="command-item"><span class="command">/family (семья, мой брак)</span><span class="description">Информация о браке</span></div>
+                <div class="command-item"><span class="command">/браки</span><span class="description">Список всех браков в группе</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header"><h2>🎲 Игры и интерактив</h2></div>
+        <div class="section-content">
+            <div class="command-list">
+                <div class="command-item"><span class="command">/ship (шипперим)</span><span class="description">Свести двух случайных пользователей</span></div>
+                <div class="command-item"><span class="command">/who (Фунтис кто...)</span><span class="description">Приписать фразу случайному пользователю</span></div>
+                <div class="command-item"><span class="command">Фунтис когда / шанс</span><span class="description">Предсказать дату или случайный шанс события</span></div>
+                <div class="command-item"><span class="command">/random (/рандом)</span><span class="description">Случайный факт о случайном пользователе</span></div>
+                <div class="command-item"><span class="command">/compliment</span><span class="description">Сделать комплимент</span></div>
+                <div class="command-item"><span class="command">/truth, /dare, /joke, /fact, /quiz</span><span class="description">Правда/действие, шутка, факт, викторина</span></div>
+                <div class="command-item"><span class="command">/rps (/кнб)</span><span class="description">Камень‑ножницы‑бумага</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header"><h2>⚔️ Дуэли</h2></div>
+        <div class="section-content">
+            <div class="command-list">
+                <div class="command-item"><span class="command">/дуэль @username</span><span class="description">Вызвать пользователя на дуэль</span></div>
+                <div class="command-item"><span class="command">/дуэлистата</span><span class="description">Статистика ваших дуэлей</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header"><h2>✨ Inline-режим</h2></div>
+        <div class="section-content">
+            <div class="command-list">
+                <div class="command-item"><span class="command">@funtys_moderator_bot [текст]</span><span class="description">Сгенерировать текст на любую тему</span></div>
+                <div class="command-item"><span class="command">@funtys_moderator_bot рп [команда]</span><span class="description">Отправить предложение RP-действия (например, «рп обнять»)</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        📢 Наш канал: <a href="https://t.me/fulias_team" target="_blank" style="color:#6ee7ff;">@fulias_team</a><br>
+        🛠️ Для связи с поддержкой используйте /support<br>
+        🤖 Актуальная версия бота: @funtys_moderator_bot
+    </div>
+</div>
+</body>
+                                                                                                      </html>
