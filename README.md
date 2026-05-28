@@ -1,1 +1,0 @@
-# funtys-moderator-bot-commands
