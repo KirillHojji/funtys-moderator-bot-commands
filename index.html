@@ -97,19 +97,174 @@
         .footer a {
             color: #0969da;
             text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .footer a:hover {
             text-decoration: underline;
         }
+
+        .footer-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .search-section {
+            margin-bottom: 32px;
+            background: #f6f8fa;
+            border-radius: 12px;
+            padding: 20px 24px;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            color: #57606a;
+            pointer-events: none;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 10px 12px 10px 40px;
+            font-size: 14px;
+            border: 1px solid #d0d7de;
+            border-radius: 8px;
+            background: white;
+            font-family: inherit;
+            outline: none;
+        }
+
+        #searchInput:focus {
+            border-color: #0969da;
+            box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.1);
+        }
+
+        .search-stats {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #57606a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .clear-search {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: #57606a;
+            border-radius: 6px;
+            transition: all 0.1s;
+        }
+
+        .clear-search:hover {
+            background: #e9ecef;
+            color: #1f2328;
+        }
+
+        .clear-search svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .toc-section {
+            background: #f6f8fa;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 32px;
+        }
+
+        .toc-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1f2328;
+        }
+
+        .toc-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+        }
+
+        .toc-link {
+            font-size: 13px;
+            color: #0969da;
+            text-decoration: none;
+            background: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid #d0d7de;
+        }
+
+        .toc-link:hover {
+            background: #f0f3f6;
+            border-color: #0969da;
+        }
+
+        .commands-list.hidden {
+            display: none;
+        }
+
+        .command-highlight {
+            background-color: #fff8c5;
+            border-radius: 4px;
+            padding: 0 2px;
+        }
+
+        h2 {
+            scroll-margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 <div class="markdown-body">
+    <div class="search-section">
+        <div class="search-container">
+            <svg class="search-icon" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-3.04-3.04ZM11.5 6.5a5 5 0 1 0-10 0 5 5 0 0 0 10 0Z"/>
+            </svg>
+            <input type="text" id="searchInput" placeholder="Поиск команд...">
+        </div>
+        <div class="search-stats">
+            <span id="searchCount"></span>
+            <button id="clearSearchBtn" class="clear-search">
+                <svg viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.75.75 0 1 1 1.06 1.06L9.06 8l3.22 3.22a.75.75 0 1 1-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 0 1-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"/>
+                </svg>
+                Сбросить
+            </button>
+        </div>
+    </div>
+
+    <div class="toc-section">
+        <div class="toc-title">Быстрая навигация</div>
+        <div class="toc-list" id="tocList"></div>
+    </div>
+
     <h1>Команды бота Funtys</h1>
 
     <h2>Основные команды</h2>
-    <ul>
+    <ul class="commands-list">
         <li><code>/start</code> — Запуск бота и основное меню</li>
         <li><code>/help</code> или <code>помощь</code>, <code>фунтис помощь</code>, <code>фунтыс помощь</code>, <code>команды</code>, <code>фунтис команды</code>, <code>фунтыс команды</code> — Показать все доступные команды и информацию о боте</li>
         <li><code>бот</code> — Проверить статус работы бота и ИИ</li>
@@ -124,7 +279,7 @@
     </ul>
 
     <h2>Информация и утилиты</h2>
-    <ul>
+    <ul class="commands-list">
         <li><code>/info</code> или <code>инфо</code>, <code>фунтис инфо</code>, <code>?чат</code> — Информация о текущем чате (группе)</li>
         <li><code>.инф</code> или <code>/this_message</code> — Информация о сообщении (ID, отправитель, права и т.д.)</li>
         <li><code>/pin</code> — Закрепить сообщение (ответом на сообщение)</li>
@@ -137,7 +292,7 @@
     </ul>
 
     <h2>Статистика и профиль</h2>
-    <ul>
+    <ul class="commands-list">
         <li><code>/stats</code> или <code>стата</code>, <code>кто я</code>, <code>фунтис стата</code>, <code>фунтыс стата</code>, <code>фунтис кто я</code>, <code>фунтыс кто я</code> — Показать вашу статистику (сообщения, баланс, карма, брак и т.д.)</li>
         <li><code>ты кто</code> или <code>кто ты</code>, <code>фунтис это кто</code>, <code>фунтыс это кто</code> — Статистика пользователя, на чье сообщение дан ответ</li>
         <li><code>/top</code> или <code>топ</code>, <code>фунтис топ</code> — Топ богачей (глобальный или в текущей группе)</li>
@@ -155,7 +310,7 @@
     </ul>
 
     <h2>Модерация группы (требуют прав администратора в группе)</h2>
-    <ul>
+    <ul class="commands-list">
         <li><code>/ban @username [время] [причина]</code> или <code>бан @username [время] [причина]</code> — Забанить пользователя (время: "1ч", "2д", "навсегда")</li>
         <li><code>/kick @username [причина]</code> или <code>кик @username [причина]</code> — Кикнуть пользователя</li>
         <li><code>/unban @username</code> или <code>разбан @username</code> — Разбанить пользователя</li>
@@ -193,7 +348,7 @@
     </ul>
 
     <h2>Управление чатом (общее)</h2>
-    <ul>
+    <ul class="commands-list">
         <li><code>/participants</code> или <code>/участники</code> — Список записанных участников группы</li>
         <li><code>Свести пару @user1 @user2</code> или <code>Создать брак @user1 @user2</code>, <code>поженить пару</code> — Создать брак в чате (требуются права администратора)</li>
         <li><code>Развести пару @user1 @user2</code> или <code>Удалить брак @user1 @user2</code> — Удалить брак в чате (требуются права администратора)</li>
@@ -203,7 +358,7 @@
 
     <h2>Социальные взаимодействия (RP)</h2>
     <p><em>(В группах могут быть отключены через <code>-рп</code> или <code>-жрп</code>)</em></p>
-    <ul>
+    <ul class="commands-list">
         <li><code>обнять [цель]</code> — Обнять цель</li>
         <li><code>поцеловать [цель]</code>, <code>чмокнуть [цель]</code>, <code>чмок [цель]</code> — Поцеловать цель</li>
         <li><code>погладить [цель]</code> — Погладить цель</li>
@@ -225,7 +380,7 @@
     </blockquote>
 
     <h2>Экономика и развлечения</h2>
-    <ul>
+    <ul class="commands-list">
         <li><code>/balance</code> или <code>/баланс</code>, <code>мой баланс</code>, <code>фунтис баланс</code> — Баланс монет</li>
         <li><code>/daily</code> или <code>/ежедневно</code>, <code>фунтис ежедневно</code> — Ежедневный бонус (требуется подписка на канал)</li>
         <li><code>/transfer @username сумма</code> или <code>перевод @username сумма</code> — Перевод денег</li>
@@ -236,7 +391,7 @@
     </ul>
 
     <h2>Автомобили (Racing)</h2>
-    <ul>
+    <ul class="commands-list">
         <li><code>/машины</code> или <code>машины</code>, <code>фунтис машины</code> — Показать список ваших автомобилей</li>
         <li><code>/выбитьмашину</code> или <code>выбитьмашину</code>, <code>фунтис выбитьмашину</code> — Получить новый автомобиль (раз в день)</li>
         <li><code>/выбратьмашину_ID</code> — Выбрать конкретный автомобиль как основной</li>
@@ -248,7 +403,7 @@
     </ul>
 
     <h2>Семья и дети</h2>
-    <ul>
+    <ul class="commands-list">
         <li><code>мои дети</code> или <code>/my_children</code> — Список ваших детей в текущей группе</li>
         <li><code>дети</code> или <code>/children</code> — Список всех детей в группе (с пагинацией)</li>
         <li><code>сдать в детдом</code> или <code>избавиться</code> — Сдать ребенка в детдом за монеты</li>
@@ -259,7 +414,7 @@
     </ul>
 
     <h2>Игры и интерактив</h2>
-    <ul>
+    <ul class="commands-list">
         <li><code>/ship</code> или <code>шипперим</code> — "Свести" двух случайных пользователей в группе</li>
         <li><code>/who фраза</code> или <code>/фунтискто</code>, <code>Фунтис кто фраза</code> — Приписать фразу случайному пользователю ("Кто...")</li>
         <li><code>Фунтис когда фраза</code> или <code>фунтыс когда фраза</code> — Предсказать дату события</li>
@@ -275,23 +430,167 @@
     </ul>
 
     <h2>Дуэли</h2>
-    <ul>
+    <ul class="commands-list">
         <li><code>/дуэль @username</code> — Вызвать пользователя на дуэль</li>
         <li><code>/дуэлистата</code> — Статистика ваших дуэлей</li>
     </ul>
 
     <h2>Inline-режим</h2>
-    <ul>
+    <ul class="commands-list">
         <li><code>@funtys_moderator_bot [текст]</code> — Сгенерировать текст на любую тему</li>
         <li><code>@funtys_moderator_bot рп [команда]</code> — Отправить предложение RP-действия (например, <code>@funtys_moderator_bot рп обнять</code>)</li>
     </ul>
 
     <hr>
     <div class="footer">
-        📢 Канал: <a href="https://t.me/fulias_team" target="_blank">@fulias_team</a><br>
-        🛠️ Поддержка: <code>/support</code><br>
-        🤖 Актуальная версия бота: <strong>@funtys_moderator_bot</strong>
+        <div class="footer-line">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="#57606a">
+                <path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5c0 .966-.784 1.75-1.75 1.75H9.06l-2.573 2.573A1.458 1.458 0 0 1 4 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25v-9.5ZM1.75 1a.75.75 0 0 0-.75.75v9.5c0 .414.336.75.75.75H4.75v2.043a.25.25 0 0 0 .427.177L7.707 12h6.543a.75.75 0 0 0 .75-.75v-9.5a.75.75 0 0 0-.75-.75H1.75Z"/>
+            </svg>
+            Канал: <a href="https://t.me/fulias_team" target="_blank">@fulias_team</a>
+        </div>
+        <div class="footer-line">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="#57606a">
+                <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0Zm1.75 4.5a.75.75 0 0 0-1.5 0v3.5H4.75a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z"/>
+            </svg>
+            Поддержка: <code style="background: none; padding: 0;">/support</code>
+        </div>
+        <div class="footer-line">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="#57606a">
+                <path d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-2.5a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 8 5.5Zm.75 5a.75.75 0 0 1-1.5 0 .75.75 0 0 1 1.5 0Z"/>
+            </svg>
+            Актуальная версия бота: <strong>@funtys_moderator_bot</strong>
+        </div>
     </div>
 </div>
+
+<script>
+    (function() {
+        const searchInput = document.getElementById('searchInput');
+        const clearBtn = document.getElementById('clearSearchBtn');
+        const searchCountSpan = document.getElementById('searchCount');
+        const allLists = document.querySelectorAll('.commands-list');
+        const tocContainer = document.getElementById('tocList');
+        const headings = Array.from(document.querySelectorAll('.markdown-body h2'));
+        
+        let allItems = [];
+        
+        headings.forEach((heading, idx) => {
+            if (!heading.id) {
+                heading.id = `section-${idx}`;
+            }
+            const link = document.createElement('a');
+            link.href = `#${heading.id}`;
+            link.className = 'toc-link';
+            link.textContent = heading.textContent.trim();
+            tocContainer.appendChild(link);
+        });
+        
+        allLists.forEach(list => {
+            const items = list.querySelectorAll('li');
+            items.forEach(item => {
+                const codeEl = item.querySelector('code');
+                const text = item.textContent.trim();
+                allItems.push({
+                    element: item,
+                    list: list,
+                    text: text.toLowerCase(),
+                    code: codeEl ? codeEl.textContent.toLowerCase() : ''
+                });
+            });
+        });
+        
+        function updateSearch() {
+            const query = searchInput.value.trim().toLowerCase();
+            let visibleCount = 0;
+            
+            if (query === '') {
+                allLists.forEach(list => {
+                    list.classList.remove('hidden');
+                });
+                allItems.forEach(item => {
+                    item.element.classList.remove('command-highlight');
+                    const innerHtml = item.element.innerHTML;
+                    if (innerHtml.includes('command-highlight')) {
+                        item.element.innerHTML = item.element.innerHTML.replace(/<span class="command-highlight">|<\/span>/g, '');
+                    }
+                });
+                searchCountSpan.textContent = `Все команды`;
+                return;
+            }
+            
+            allLists.forEach(list => {
+                let hasVisibleInList = false;
+                const itemsInList = Array.from(list.querySelectorAll('li'));
+                itemsInList.forEach(li => {
+                    const liText = li.textContent.toLowerCase();
+                    const matches = liText.includes(query);
+                    if (matches) {
+                        li.style.display = '';
+                        hasVisibleInList = true;
+                        visibleCount++;
+                        highlightText(li, query);
+                    } else {
+                        li.style.display = 'none';
+                    }
+                });
+                if (hasVisibleInList) {
+                    list.classList.remove('hidden');
+                } else {
+                    list.classList.add('hidden');
+                }
+            });
+            
+            searchCountSpan.textContent = `Найдено: ${visibleCount}`;
+        }
+        
+        function highlightText(element, query) {
+            const originalHtml = element.innerHTML;
+            if (originalHtml.includes('command-highlight')) return;
+            const textNodes = [];
+            const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, {
+                acceptNode: function(node) {
+                    if (node.parentElement && (node.parentElement.tagName === 'CODE' || node.parentElement.classList?.contains('command-highlight'))) {
+                        return NodeFilter.FILTER_SKIP;
+                    }
+                    return NodeFilter.FILTER_ACCEPT;
+                }
+            });
+            while(walker.nextNode()) {
+                textNodes.push(walker.currentNode);
+            }
+            textNodes.forEach(node => {
+                const text = node.nodeValue;
+                if (text && text.toLowerCase().includes(query)) {
+                    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+                    const span = document.createElement('span');
+                    span.innerHTML = text.replace(regex, '<span class="command-highlight">$1</span>');
+                    node.parentNode.replaceChild(span, node);
+                }
+            });
+        }
+        
+        function clearSearch() {
+            searchInput.value = '';
+            allLists.forEach(list => {
+                list.classList.remove('hidden');
+                const items = list.querySelectorAll('li');
+                items.forEach(li => {
+                    li.style.display = '';
+                    const inner = li.innerHTML;
+                    if (inner.includes('command-highlight')) {
+                        li.innerHTML = inner.replace(/<span class="command-highlight">|<\/span>/g, '');
+                    }
+                });
+            });
+            searchCountSpan.textContent = `Все команды`;
+        }
+        
+        searchInput.addEventListener('input', updateSearch);
+        clearBtn.addEventListener('click', clearSearch);
+        
+        searchCountSpan.textContent = `Все команды`;
+    })();
+</script>
 </body>
 </html>
