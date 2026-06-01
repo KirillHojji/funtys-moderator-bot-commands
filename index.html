@@ -275,6 +275,8 @@
         </div>
     </div>
 
+    <p>Funtys — AI-помощник для общения, модерации и управления чатами в Telegram. Может поддержать беседу, помочь с порядком в группе, показать погоду, время, статистику и многое другое.</p>
+
     <div class="toc-section">
         <div class="toc-title">Быстрая навигация</div>
         <div class="toc-list" id="tocList"></div>
@@ -380,7 +382,7 @@
     </ul>
 
     <h2>Социальные взаимодействия (RP)</h2>
-    <p><em>(В группах могут быть отключены через <code>-рп</code> или <code>-жрп</code>)</em></p>
+    <p><em>(В группах могут быть отключены через <code>-рп</code> or <code>-жрп</code>)</em></p>
     <ul class="commands-list">
         <li><code>обнять [цель]</code> — Обнять цель</li>
         <li><code>поцеловать [цель]</code>, <code>чмокнуть [цель]</code>, <code>чмок [цель]</code> — Поцеловать цель</li>
@@ -398,7 +400,7 @@
         <li><code>+</code> — Поставить лайк (ответом на сообщение)</li>
         <li><code>-</code> — Поставить дизлайк (ответом на сообщение)</li>
     </ul>
-    <blockquote>
+    blockquote>
         <p>⚠️ Жёсткие РП-команды были убраны из этого списка из соображений безопасности пользователей.</p>
     </blockquote>
 
@@ -491,6 +493,12 @@
         <li><code>@funtys_moderator_bot [текст]</code> — Сгенерировать текст на любую тему</li>
         <li><code>@funtys_moderator_bot рп [команда]</code> — Отправить предложение RP-действия (например, <code>@funtys_moderator_bot рп обнять</code>)</li>
     </ul>
+
+    <p><strong>Как добавить бота в чат:</strong><br>
+    1. Нажмите на название чата вверху<br>
+    2. Выберите "Добавить участников"<br>
+    3. Найдите @funtys_moderator_bot<br>
+    4. Выдайте боту права администратора для полного функционала</p>
 
     <hr>
     <div class="footer">
@@ -596,36 +604,45 @@
             while(walker.nextNode()) {
                 textNodes.push(walker.currentNode);
             }
+            
             textNodes.forEach(node => {
                 const text = node.nodeValue;
-                if (text && text.toLowerCase().includes(query)) {
-                    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
-                    const span = document.createElement('span');
-                    span.innerHTML = text.replace(regex, '<span class="command-highlight">$1</span>');
-                    node.parentNode.replaceChild(span, node);
+                const lowerText = text.toLowerCase();
+                let index = lowerText.indexOf(query);
+                
+                if (index >= 0) {
+                    const fragment = document.createDocumentFragment();
+                    let lastIndex = 0;
+                    
+                    while (index >= 0) {
+                        if (index > lastIndex) {
+                            fragment.appendChild(document.createTextNode(text.substring(lastIndex, index)));
+                        }
+                        
+                        const span = document.createElement('span');
+                        span.className = 'command-highlight';
+                        span.textContent = text.substring(index, index + query.length);
+                        fragment.appendChild(span);
+                        
+                        lastIndex = index + query.length;
+                        index = lowerText.indexOf(query, lastIndex);
+                    }
+                    
+                    if (lastIndex < text.length) {
+                        fragment.appendChild(document.createTextNode(text.substring(lastIndex)));
+                    }
+                    
+                    node.parentNode.replaceChild(fragment, node);
                 }
             });
         }
         
-        function clearSearch() {
-            searchInput.value = '';
-            allLists.forEach(list => {
-                list.classList.remove('hidden');
-                const items = list.querySelectorAll('li');
-                items.forEach(li => {
-                    li.style.display = '';
-                    const inner = li.innerHTML;
-                    if (inner.includes('command-highlight')) {
-                        li.innerHTML = inner.replace(/<span class="command-highlight">|<\/span>/g, '');
-                    }
-                });
-            });
-            searchCountSpan.textContent = `Все команды`;
-            clearBtn.classList.remove('visible');
-        }
-        
         searchInput.addEventListener('input', updateSearch);
-        clearBtn.addEventListener('click', clearSearch);
+        clearBtn.addEventListener('click', function() {
+            searchInput.value = '';
+            updateSearch();
+            searchInput.focus();
+        });
         
         searchCountSpan.textContent = `Все команды`;
     })();
