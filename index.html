@@ -1,3 +1,4 @@
+<!-- Индекс страницы команд бота -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -11,115 +12,172 @@
             box-sizing: border-box;
         }
 
+        /* Базовые переменные для светлой темы */
+        :root {
+            --bg-page: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --text-title: #0f172a;
+            --border-color: #e2e8f0;
+            --accent-color: #2563eb;
+            --accent-hover: #1d4ed8;
+            --code-bg: #f1f5f9;
+            --code-color: #2563eb;
+            --search-bg: #f8fafc;
+            --blockquote-bg: #f8fafc;
+            --blockquote-border: #cbd5e1;
+            --highlight-bg: #fef08a;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Автоматическая темная тема на основе системных настроек */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-page: #0f172a;
+                --bg-card: #1e293b;
+                --text-main: #cbd5e1;
+                --text-muted: #94a3b8;
+                --text-title: #f8fafc;
+                --border-color: #334155;
+                --accent-color: #60a5fa;
+                --accent-hover: #93c5fd;
+                --code-bg: #1e293b;
+                --code-color: #60a5fa;
+                --search-bg: #0f172a;
+                --blockquote-bg: #0f172a;
+                --blockquote-border: #475569;
+                --highlight-bg: #854d0e;
+                --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+            }
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
-            background: #ffffff;
-            color: #1f2328;
-            line-height: 1.5;
-            padding: 32px 16px;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 48px 16px;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         .markdown-body {
-            max-width: 900px;
+            max-width: 850px;
             margin: 0 auto;
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
         }
 
         .markdown-body h1 {
-            font-size: 2rem;
-            font-weight: 600;
-            border-bottom: 1px solid #d0d7de;
-            padding-bottom: 0.3em;
-            margin: 24px 0 16px;
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin: 0 0 32px;
+            color: var(--text-title);
         }
 
         .markdown-body h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            border-bottom: 1px solid #d0d7de;
-            padding-bottom: 0.3em;
-            margin: 24px 0 16px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin: 40px 0 20px;
+            color: var(--text-title);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .markdown-body h3 {
-            font-size: 1.25rem;
+            font-size: 0.95rem;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             margin: 24px 0 12px;
+            color: var(--text-muted);
         }
 
         .markdown-body p {
             margin-bottom: 16px;
+            color: var(--text-main);
         }
 
         .markdown-body ul {
-            padding-left: 2em;
-            margin-bottom: 16px;
+            list-style: none;
+            padding: 0;
+            margin-bottom: 24px;
         }
 
         .markdown-body li {
-            margin-bottom: 6px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            color: var(--text-main);
+        }
+
+        .markdown-body li::before {
+            content: "•";
+            color: var(--text-muted);
+            font-weight: bold;
+            margin-right: 4px;
         }
 
         .markdown-body code {
-            font-family: ui-monospace, 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+            font-family: ui-monospace, 'SF Mono', 'Cascadia Code', monospace;
             font-size: 0.85em;
-            background: #f6f8fa;
-            padding: 0.2em 0.4em;
+            background: var(--code-bg);
+            padding: 0.2em 0.5em;
             border-radius: 6px;
-            color: #cf222e;
+            color: var(--code-color);
+            font-weight: 500;
+            flex-shrink: 0;
+            border: 1px solid var(--border-color);
         }
 
         .markdown-body hr {
             border: none;
-            border-top: 1px solid #d0d7de;
-            margin: 24px 0;
+            border-top: 1px solid var(--border-color);
+            margin: 32px 0;
         }
 
         .markdown-body blockquote {
-            padding: 0 1em;
-            color: #57606a;
-            border-left: 0.25em solid #d0d7de;
-            margin: 16px 0;
+            padding: 12px 16px;
+            color: var(--text-main);
+            background: var(--blockquote-bg);
+            border-left: 4px solid var(--blockquote-border);
+            border-radius: 4px;
+            margin: 20px 0;
+            font-size: 0.95rem;
         }
 
         .markdown-body strong {
             font-weight: 600;
+            color: var(--text-title);
         }
 
-        .footer {
-            margin-top: 48px;
-            padding-top: 16px;
-            border-top: 1px solid #d0d7de;
-            font-size: 0.8rem;
-            color: #57606a;
-            text-align: center;
-        }
-
-        .footer a {
-            color: #0969da;
+        /* Инлайновые ссылки на бота/поддержку в тексте */
+        .bot-link {
+            color: var(--accent-color);
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+            font-weight: 500;
+            transition: color 0.15s ease;
         }
 
-        .footer a:hover {
+        .bot-link:hover {
+            color: var(--accent-hover);
             text-decoration: underline;
         }
 
-        .footer-line {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 8px;
-            flex-wrap: wrap;
-        }
-
         .search-section {
-            margin-bottom: 32px;
-            background: #f6f8fa;
+            margin-bottom: 24px;
+            background: var(--search-bg);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 20px 24px;
+            padding: 16px;
         }
 
         .search-container {
@@ -128,34 +186,36 @@
 
         .search-icon {
             position: absolute;
-            left: 12px;
+            left: 14px;
             top: 50%;
             transform: translateY(-50%);
-            width: 18px;
-            height: 18px;
-            color: #57606a;
+            width: 16px;
+            height: 16px;
+            color: var(--text-muted);
             pointer-events: none;
         }
 
         #searchInput {
             width: 100%;
-            padding: 10px 36px 10px 40px;
+            padding: 12px 40px 12px 42px;
             font-size: 14px;
-            border: 1px solid #d0d7de;
+            border: 1px solid var(--border-color);
             border-radius: 8px;
-            background: white;
+            background: var(--bg-card);
             font-family: inherit;
             outline: none;
+            transition: all 0.2s ease;
+            color: var(--text-title);
         }
 
         #searchInput:focus {
-            border-color: #0969da;
-            box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.1);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
         }
 
         .clear-search-btn {
             position: absolute;
-            right: 12px;
+            right: 14px;
             top: 50%;
             transform: translateY(-50%);
             background: none;
@@ -167,8 +227,8 @@
             justify-content: center;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.1s;
-            color: #57606a;
+            transition: opacity 0.2s;
+            color: var(--text-muted);
         }
 
         .clear-search-btn.visible {
@@ -177,92 +237,120 @@
         }
 
         .clear-search-btn:hover {
-            color: #1f2328;
-        }
-
-        .clear-search-btn svg {
-            width: 16px;
-            height: 16px;
+            color: var(--text-main);
         }
 
         .search-stats {
-            margin-top: 8px;
+            margin-top: 10px;
             font-size: 12px;
-            color: #57606a;
+            color: var(--text-muted);
+            font-weight: 500;
         }
 
         .toc-section {
-            background: #f6f8fa;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 16px 20px;
-            margin-bottom: 32px;
+            padding: 20px;
+            margin-bottom: 40px;
         }
 
         .toc-title {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #1f2328;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 14px;
+            color: var(--text-muted);
         }
 
         .toc-list {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 8px 16px;
         }
 
         .toc-link {
             font-size: 13px;
-            color: #0969da;
+            color: var(--accent-color);
             text-decoration: none;
-            padding: 4px 0;
-            display: block;
+            padding: 2px 0;
+            display: inline-block;
+            transition: color 0.15s ease;
         }
 
         .toc-link:hover {
+            color: var(--accent-hover);
             text-decoration: underline;
         }
 
-        .commands-list.hidden {
+        .commands-list.hidden, .command-section-title.hidden {
             display: none;
         }
 
         .command-highlight {
-            background-color: #fff8c5;
+            background-color: var(--highlight-bg);
             border-radius: 4px;
             padding: 0 2px;
+            color: var(--text-title);
         }
 
-        h2 {
-            scroll-margin-top: 20px;
+        h2, h3 {
+            scroll-margin-top: 24px;
         }
 
         .new-badge {
-            display: inline-block;
-            background-color: #e74c3c;
+            display: inline-flex;
+            align-items: center;
+            background-color: #ef4444;
             color: white;
-            font-size: 0.65rem;
-            font-weight: 600;
-            padding: 0.2rem 0.5rem;
-            border-radius: 12px;
-            margin-left: 6px;
-            vertical-align: middle;
-            line-height: 1.2;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 6px;
+            margin-left: 8px;
             text-transform: uppercase;
-            letter-spacing: 0.3px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            letter-spacing: 0.05em;
+        }
+
+        .footer {
+            margin-top: 64px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 12px;
         }
     </style>
 </head>
 <body>
 <div class="markdown-body">
+    <!-- Поиск -->
     <div class="search-section">
         <div class="search-container">
             <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-            <input type="text" id="searchInput" placeholder="Поиск команд...">
+            <input type="text" id="searchInput" placeholder="Поиск по командам...">
             <button id="clearSearchBtn" class="clear-search-btn">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -271,254 +359,345 @@
             </button>
         </div>
         <div class="search-stats">
-            <span id="searchCount"></span>
+            <span id="searchCount">Все команды</span>
         </div>
     </div>
 
+    <!-- Меню навигации -->
     <div class="toc-section">
         <div class="toc-title">Быстрая навигация</div>
         <div class="toc-list" id="tocList"></div>
     </div>
 
-    <br>
     <h2>О боте</h2>
-    <p>Funtys — AI-помощник для общения, модерации и управления чатами в Telegram. Может поддержать беседу, помочь с порядком в группе, показать погоду, время, статистику и многое другое.</p><br><br>
+    <p><a href="https://t.me/funtys_moderator_bot" target="_blank" class="bot-link">Funtys</a> — AI-помощник для общения, модерации и управления чатами в Telegram. Может поддержать беседу, помочь с порядком в группе, показать погоду, время, статистику и многое другое.</p>
     
     <h1>Команды бота Funtys</h1>
 
+    <!-- 1. ОСНОВНЫЕ КОМАНДЫ -->
     <h2>Основные команды</h2>
+    
+    <h3 class="command-section-title">Базовые команды и навигация</h3>
     <ul class="commands-list">
         <li><code>/start</code> — Запуск бота и основное меню</li>
-        <li><code>/help</code> или <code>помощь</code>, <code>фунтис помощь</code>, <code>фунтыс помощь</code>, <code>команды</code>, <code>фунтис команды</code>, <code>фунтыс команды</code> — Показать все доступные команды и информацию о боте</li>
+        <li><code>/help</code> — Показать все доступные команды и информацию о боте</li>
         <li><code>бот</code> — Проверить статус работы бота и ИИ</li>
-        <li><code>/newchat</code> или <code>новыйчат</code>, <code>Создать новый чат</code> — Очистить историю чата (в ЛС)</li>
+        <li><code>/newchat</code> — Очистить историю чата (в ЛС)</li>
+        <li><code>/terms</code> — Условия использования</li>
+    </ul>
+
+    <h3 class="command-section-title">Донаты и Поддержка</h3>
+    <ul class="commands-list">
         <li><code>/support</code> — Связаться с поддержкой</li>
-        <li><code>/paysupport</code> — Связаться с поддержкой по платежам (донатам)</li>
+        <li><code>/paysupport</code> — Связаться с поддержкой по платежам</li>
         <li><code>/donate</code> — Поддержать бота (звёзды)</li>
         <li><code>/buy</code> — Меню для донатов и ввода промокода</li>
-        <li><code>/terms</code> — Условия использования</li>
         <li><code>/code</code> — Ввести промокод</li>
-        <li><code>/stop</code> — Выйти из режима поддержки и вернуться к ИИ-общению (в ЛС)</li>
-        <li><code>+хам</code> / <code>-хам</code> — Переключить стиль ИИ (троллинг/обычный). Работает в группах и личных сообщениях <span class="new-badge">NEW</span></li>
-        <li><code>/стиль</code> — Показать или изменить стиль ИИ. Работает в группах и личных сообщениях <span class="new-badge">NEW</span></li>
-        <li><code>+хамменя</code> / <code>-хамменя</code> — Персональный стиль ИИ к вам (бот будет троллить именно вас в группах) <span class="new-badge">NEW</span></li>
+        <li><code>/stop</code> — Выйти из режима поддержки (в ЛС)</li>
+    </ul>
+
+    <h3 class="command-section-title">Настройка стилей ИИ</h3>
+    <ul class="commands-list">
+        <li><code>+хам</code> / <code>-хам</code> — Переключить стиль ИИ (троллинг/обычный) <span class="new-badge">NEW</span></li>
+        <li><code>/стиль</code> — Показать или изменить стиль ИИ <span class="new-badge">NEW</span></li>
+        <li><code>+хамменя</code> / <code>-хамменя</code> — Персональный троллинг в вашу сторону <span class="new-badge">NEW</span></li>
         <li><code>/стиль_мне</code> — Персональный стиль ИИ с аргументами <span class="new-badge">NEW</span></li>
     </ul>
 
+    <!-- 2. ИНФОРМАЦИЯ И УТИЛИТЫ -->
     <h2>Информация и утилиты</h2>
+    
+    <h3 class="command-section-title">Утилиты для чата</h3>
     <ul class="commands-list">
-        <li><code>/info</code> или <code>инфо</code>, <code>фунтис инфо</code>, <code>?чат</code> — Информация о текущем чате (группе)</li>
-        <li><code>/pin</code> — Закрепить сообщение (ответом на сообщение)</li>
-        <li><code>/unpin</code> — Открепить последнее закрепленное сообщение</li>
-        <li><code>/translate язык текст</code> — Перевести текст (например, <code>/translate en Привет</code>)</li>
-        <li><code>/poll вопрос | вариант1 | вариант2 | ...</code> — Создать опрос</li>
-        <li><code>/weather город</code> или <code>/погода город</code>, <code>фунтис погода город</code> — Погода в городе (с прогнозом)</li>
-        <li><code>/time город</code> или <code>/время город</code>, <code>фунтис время город</code>, <code>фунтыс время город</code> — Точное время в указанном городе</li>
-        <li><code>/remind время текст</code> или <code>/напомни время текст</code> — Установить напоминание (например, <code>/remind 30м Позвонить маме</code>)</li>
-        <li><code>/participants</code> или <code>/участники</code> — Список записанных участников группы</li>
+        <li><code>/info</code> — Информация о текущем чате (группе)</li>
+        <li><code>/pin</code> — Закрепить сообщение (ответом)</li>
+        <li><code>/unpin</code> — Открепить последнее сообщение</li>
+        <li><code>/poll</code> — Создать опрос с вариантами</li>
+        <li><code>/participants</code> — Список записанных участников группы</li>
     </ul>
 
+    <h3 class="command-section-title">Полезные инструменты</h3>
+    <ul class="commands-list">
+        <li><code>/translate язык текст</code> — Перевести текст на указанный язык</li>
+        <li><code>/weather город</code> — Погода в городе с прогнозом</li>
+        <li><code>/time город</code> — Точное время в указанном городе</li>
+        <li><code>/remind время текст</code> — Установить напоминание</li>
+    </ul>
+
+    <!-- 3. СТАТИСТИКА И ПРОФИЛЬ -->
     <h2>Статистика и профиль</h2>
+    
+    <h3 class="command-section-title">Личный профиль и кастомизация</h3>
     <ul class="commands-list">
-        <li><code>/stats</code> или <code>стата</code>, <code>кто я</code>, <code>фунтис стата</code>, <code>фунтыс стата</code>, <code>фунтис кто я</code>, <code>фунтыс кто я</code> — Показать вашу статистику (сообщения, баланс, карма, брак и т.д.)</li>
-        <li><code>ты кто</code> или <code>кто ты</code>, <code>фунтис это кто</code>, <code>фунтыс это кто</code> — Статистика пользователя, на чье сообщение дан ответ</li>
-        <li><code>/top</code> или <code>топ</code>, <code>фунтис топ</code> — Топ богачей (глобальный или в текущей группе)</li>
-        <li><code>/topchat</code> или <code>топчат</code>, <code>фунтис топчат</code> — Топ активных пользователей по сообщениям в группе</li>
-        <li><code>/name текст</code> или <code>+имя текст</code>, <code>+ник текст</code> — Установить отображаемое имя в группе</li>
-        <li><code>/bio текст</code> или <code>+био текст</code>, <code>+описание текст</code> — Установить описание профиля в группе</li>
-        <li><code>/delname</code> или <code>-имя</code>, <code>-ник</code> — Удалить отображаемое имя</li>
-        <li><code>/delbio</code> или <code>-био</code>, <code>-описание</code> — Удалить описание профиля</li>
-        <li><code>/likes</code> или <code>лайки</code> — Статистика лайков/дизлайков пользователя</li>
-        <li><code>/karma</code> или <code>карма</code> — Показать свою карму</li>
-        <li><code>/karmatop</code> или <code>карматоп</code> — Топ пользователей по карме</li>
-        <li><code>/achievements</code> или <code>достижения</code>, <code>мои достижения</code>, <code>фунтис достижения</code> — Список своих достижений</li>
-        <li><code>/права</code> или <code>права</code> — Узнать свои права в группе и доступные команды модерации</li>
-        <li><code>/mywarns</code> или <code>мои варны</code>, <code>фунтис мои варны</code> — Количество своих предупреждений</li>
-        <li><code>/level</code> или <code>/уровень</code> — Подробно показать ваш уровень</li>
-        <li><code>/leaders</code> или <code>/лидеры</code> — Топ пользователей по уровню в текущей группе</li>
-        <li><code>/пол</code> — Посмотреть текущий выбранный пол и подсказку по настройке</li>
-        <li><code>/настройка уведомления</code> или <code>/найстройка уведомления</code> — Включить тихие упоминания для дуэлей, RP и других команд, которые могут вас звать</li>
+        <li><code>/stats</code> — Показать вашу личную статистику</li>
+        <li><code>/name текст</code> — Установить отображаемое имя в группе</li>
+        <li><code>/bio текст</code> — Установить описание профиля в группе</li>
+        <li><code>/delname</code> — Удалить отображаемое имя</li>
+        <li><code>/delbio</code> — Удалить описание профиля</li>
+        <li><code>/пол</code> — Текущий пол и подсказка по настройке</li>
+        <li><code>/настройка уведомления</code> — Включить тихие упоминания</li>
     </ul>
 
-    <h2>Модерация группы (требуют прав администратора в группе)</h2>
+    <h3 class="command-section-title">Социальные показатели</h3>
     <ul class="commands-list">
-        <li><code>/ban @username [время] [причина]</code> или <code>бан @username [время] [причина]</code> — Забанить пользователя (время: "1ч", "2д", "навсегда")</li>
-        <li><code>/kick @username [причина]</code> или <code>кик @username [причина]</code> — Кикнуть пользователя</li>
-        <li><code>/unban @username</code> или <code>разбан @username</code> — Разбанить пользователя</li>
-        <li><code>/mute @username [время] [причина]</code> или <code>мут @username [время] [причина]</code>, <code>+мут @username...</code> — Замутить пользователя</li>
-        <li><code>/unmute @username</code> или <code>размут @username</code>, <code>-мут @username</code>, <code>говори @username</code> — Размутить пользователя</li>
-        <li><code>/warn @username [причина]</code> или <code>варн @username [причина]</code>, <code>+варн @username...</code>, <code>пред @username</code> — Выдать предупреждение</li>
-        <li><code>/unwarn @username</code> или <code>снять варн @username</code>, <code>-варн @username</code>, <code>разварн @username</code> — Снять предупреждение</li>
-        <li><code>/bans</code> или <code>баны</code>, <code>фунтис баны</code> — Список активных банов в группе</li>
-        <li><code>/mutes</code> или <code>муты</code>, <code>фунтис муты</code> — Список активных мутов в группе</li>
-        <li><code>/warns</code> или <code>варны</code>, <code>преды</code>, <code>фунтис варны</code> — Список всех предупреждений в группе</li>
-        <li><code>/del [N]</code> или <code>удалить [N]</code>, <code>фунтис удалить</code> — Удалить N последних сообщений или конкретное (ответом)</li>
-        <li><code>/addrules</code> или <code>+правила</code> — Установить правила для группы (для ИИ-модерации)</li>
-        <li><code>/rules</code> или <code>правила</code>, <code>фунтис правила</code> — Показать правила группы</li>
-        <li><code>/deleterules</code> или <code>-правила</code>, <code>/удалитьправила</code> — Удалить правила группы</li>
-        <li><code>/welcome текст</code> или <code>.приветствие текст</code> — Установить текст приветствия от администрации</li>
-        <li><code>/welcome reset</code> или <code>.приветствие reset</code>, <code>.приветствие сброс</code> — Сбросить текст приветствия от администрации</li>
-        <li><code>/lock</code> или <code>-чат</code> — Заблокировать чат (запретить отправку сообщений всем, кроме админов)</li>
-        <li><code>/unlock</code> или <code>+чат</code> — Разблокировать чат</li>
-        <li><code>-ссылки</code> — Включить проверку подозрительных ссылок (будут блокироваться)</li>
-        <li><code>+ссылки</code> — Отключить проверку ссылок</li>
-        <li><code>-аимодерация</code> или <code>/disable_ai_moderation</code> — Выключить ИИ-модерацию</li>
-        <li><code>+аимодерация</code> или <code>/enable_ai_moderation</code> — Включить ИИ-модерацию</li>
-        <li><code>статусаимодерации</code> или <code>/ai_moderation_status</code> — Статус ИИ-модерации</li>
-        <li><code>-рп</code> или <code>/disable_rp</code> — Отключить обычные RP команды</li>
-        <li><code>+рп</code> или <code>/enable_rp</code> — Включить обычные RP команды</li>
-        <li><code>-жрп</code> или <code>/disable_hard_rp</code> — Отключить жесткие RP команды (18+)</li>
-        <li><code>+жрп</code> или <code>/enable_hard_rp</code> — Включить жесткие RP команды (18+)</li>
-        <li><code>статусрп</code> или <code>/rp_status</code> — Статус RP команд</li>
-        <li><code>/автобомбы</code> или <code>/auto_funny</code> — Включить или выключить автоматические шутки в группе. Бот будет случайно отправлять шутки с настраиваемым кулдауном <span class="new-badge">NEW</span></li>
-        <li><code>+ошибки</code> / <code>-ошибки</code> — Показывать/скрывать сообщения об ошибках ИИ в группе <span class="new-badge">NEW</span></li>
-        <li><code>/принять [@username/ID]</code> — Принять заявки на вступление в группу</li>
+        <li><code>ты кто</code> — Статистика пользователя, на чье сообщение дан ответ</li>
+        <li><code>/top</code> — Топ богачей (глобальный или в группе)</li>
+        <li><code>/topchat</code> — Топ активных пользователей по сообщениям</li>
+        <li><code>/likes</code> — Статистика лайков/дизлайков пользователя</li>
+        <li><code>/karma</code> — Показать свою карму</li>
+        <li><code>/karmatop</code> — Топ пользователей по карме</li>
+        <li><code>/achievements</code> — Список своих достижений</li>
+        <li><code>/level</code> — Подробно показать ваш уровень</li>
+        <li><code>/leaders</code> — Топ пользователей по уровню в группе</li>
+    </ul>
+
+    <!-- 4. МОДЕРАЦИЯ ГРУППЫ -->
+    <h2>Модерация группы (для админов)</h2>
+    
+    <h3 class="command-section-title">Наказания и ограничения</h3>
+    <ul class="commands-list">
+        <li><code>/ban @username</code> — Забанить пользователя в группе</li>
+        <li><code>/kick @username</code> — Кикнуть пользователя</li>
+        <li><code>/unban @username</code> — Разбанить пользователя</li>
+        <li><code>/mute @username</code> — Замутить пользователя на время</li>
+        <li><code>/unmute @username</code> — Снять мут с пользователя</li>
+        <li><code>/warn @username</code> — Выдать предупреждение</li>
+        <li><code>/unwarn @username</code> — Снять предупреждение</li>
+        <li><code>/mywarns</code> — Количество своих предупреждений</li>
+        <li><code>/rights</code> — Узнать свои права и доступные команды</li>
+    </ul>
+
+    <h3 class="command-section-title">Списки нарушений и чистка</h3>
+    <ul class="commands-list">
+        <li><code>/bans</code> — Список активных банов в группе</li>
+        <li><code>/mutes</code> — Список активных мутов в группе</li>
+        <li><code>/warns</code> — Список всех предупреждений в группе</li>
+        <li><code>/del [N]</code> — Удалить последние сообщения чата</li>
+    </ul>
+
+    <h3 class="command-section-title">Настройки правил и приветствия</h3>
+    <ul class="commands-list">
+        <li><code>/addrules</code> — Установить правила для группы</li>
+        <li><code>/rules</code> — Показать текущие правила группы</li>
+        <li><code>/deleterules</code> — Удалить правила группы</li>
+        <li><code>/welcome текст</code> — Установить текст приветствия</li>
+        <li><code>/welcome reset</code> — Сбросить текст приветствия</li>
+    </ul>
+
+    <h3 class="command-section-title">Управление доступом чата</h3>
+    <ul class="commands-list">
+        <li><code>/lock</code> — Заблокировать отправку сообщений для всех</li>
+        <li><code>/unlock</code> — Разблокировать чат</li>
+        <li><code>-ссылки</code> / <code>+ссылки</code> — Переключить блокировку ссылок</li>
+    </ul>
+
+    <h3 class="command-section-title">Включение/Выключение модулей</h3>
+    <ul class="commands-list">
+        <li><code>-аимодерация</code> / <code>+аимодерация</code> — Переключить ИИ-модерацию</li>
+        <li><code>статусаимодерации</code> — Узнать статус ИИ-модерации</li>
+        <li><code>-рп</code> / <code>+рп</code> — Переключить обычные RP команды</li>
+        <li><code>-жрп</code> / <code>+жрп</code> — Переключить жесткие RP команды (18+)</li>
+        <li><code>статусрп</code> — Показать статус RP модулей</li>
+        <li><code>/автобомбы</code> — Переключить режим автоматических шуток <span class="new-badge">NEW</span></li>
+        <li><code>+ошибки</code> / <code>-ошибки</code> — Отображение ошибок ИИ в группе <span class="new-badge">NEW</span></li>
+    </ul>
+
+    <h3 class="command-section-title">Заявки и инвайты</h3>
+    <ul class="commands-list">
+        <li><code>/принять</code> — Принять заявки на вступление</li>
         <li><code>/заявки</code> — Список ожидающих заявок</li>
-        <li><code>/отклонить [@username/ID]</code> — Отклонить заявки</li>
-        <li><code>/пригласить @username</code> — Отправить пользователю приглашение в группу в ЛС</li>
-        <li><code>/вернуть @username</code> — Разбанить пользователя и отправить приглашение</li>
-        <li><code>Свести пару @user1 @user2</code> или <code>Создать брак @user1 @user2</code>, <code>поженить пару</code> — Создать брак в чате</li>
-        <li><code>Развести пару @user1 @user2</code> или <code>Удалить брак @user1 @user2</code> — Удалить брак в чате</li>
-        <li><code>наградить @username</code> или <code>+достижение @username</code>, <code>добавить достижение</code> — Выдать достижение пользователю</li>
-        <li><code>удалить достижение @username</code> или <code>-достижение @username</code> — Удалить достижение у пользователя</li>
-        <li><code>/расформировать</code> — Расформировать чат (доступно только владельцу группы)</li>
+        <li><code>/отклонить</code> — Отклонить заявки на вступление</li>
+        <li><code>/пригласить @username</code> — Отправить приглашение пользователю в ЛС</li>
+        <li><code>/вернуть @username</code> — Разбанить и отправить инвайт</li>
     </ul>
 
-    <h2>Социальные взаимодействия (RP)</h2>
-    <p><em>(В группах могут быть отключены через <code>-рп</code> or <code>-жрп</code>)</em></p>
+    <h3 class="command-section-title">Административное управление</h3>
     <ul class="commands-list">
-        <li><code>обнять [цель]</code> — Обнять цель</li>
-        <li><code>поцеловать [цель]</code>, <code>чмокнуть [цель]</code>, <code>чмок [цель]</code> — Поцеловать цель</li>
-        <li><code>погладить [цель]</code> — Погладить цель</li>
+        <li><code>Свести пару</code> — Принудительно создать брак в чате</li>
+        <li><code>Развести пару</code> — Удалить брак между пользователями</li>
+        <li><code>наградить @username</code> — Выдать кастомное достижение</li>
+        <li><code>удалить достижение</code> — Забрать достижение у пользователя</li>
+        <li><code>/расформировать</code> — Полное расформирование чата (только владелец)</li>
+    </ul>
+
+    <!-- 5. СОЦИАЛЬНЫЕ ВЗАИМОДЕЙСТВИЯ -->
+    <h2>Социальные взаимодействия (RP)</h2>
+    <p><em>(В группах могут быть отключены через настройки приватности)</em></p>
+    
+    <h3 class="command-section-title">Дружелюбные РП</h3>
+    <ul class="commands-list">
+        <li><code>обнять [цель]</code> — Обнять выбранного пользователя</li>
+        <li><code>поцеловать [цель]</code> — Поцеловать цель</li>
+        <li><code>погладить [цель]</code> — Погладить по голове</li>
         <li><code>взять за руку [цель]</code> — Взять за руку</li>
-        <li><code>пожать руку [цель]</code> — Пожать руку</li>
-        <li><code>бухнуть</code> или <code>напиться</code> — Принять алкогольный напиток</li>
-        <li><code>плюнуть [цель]</code>, <code>харкнуть [цель]</code> — Плюнуть в цель</li>
-        <li><code>ущипнуть [цель]</code> — Ущипнуть цель</li>
+        <li><code>пожать руку [цель]</code> — Пожать руку при встрече</li>
+        <li><code>извиниться [цель]</code> — Принести свои извинения</li>
+        <li><code>/compliment</code> — Сделать приятный комплимент</li>
+    </ul>
+
+    <h3 class="command-section-title">Агрессивные и шуточные РП</h3>
+    <ul class="commands-list">
+        <li><code>бухнуть</code> / <code>напиться</code> — Выпить алкогольный напиток</li>
+        <li><code>плюнуть [цель]</code> — Плюнуть в пользователя</li>
+        <li><code>ущипнуть [цель]</code> — Слегка ущипнуть</li>
         <li><code>шлёпнуть [цель]</code> — Шлёпнуть цель</li>
-        <li><code>побрить [цель]</code> или <code>подстричь налысо [цель]</code> — Побрить цель</li>
-        <li><code>извиниться [цель]</code> — Извиниться перед целью</li>
+        <li><code>побрить [цель]</code> — Побрить пользователя налысо</li>
         <li><code>толкнуть [цель]</code> — Толкнуть цель</li>
-        <li><code>облизнуть [цель]</code> — Облизнуть цель</li>
+        <li><code>облизнуть [цель]</code> — Облизнуть выбранного игрока</li>
+    </ul>
+
+    <h3 class="command-section-title">Оценки и продолжение рода</h3>
+    <ul class="commands-list">
         <li><code>+</code> — Поставить лайк (ответом на сообщение)</li>
         <li><code>-</code> — Поставить дизлайк (ответом на сообщение)</li>
-        <li><code>сделать детей</code> — С определённым шансом завести ребёнка <span class="new-badge">NEW</span></li>
+        <li><code>сделать детей</code> — Попытаться завести ребёнка <span class="new-badge">NEW</span></li>
     </ul>
     <blockquote>
-        <p>Жёсткие РП-команды были убраны из этого списка из соображений безопасности пользователей.</p>
+        <p>Жёсткие РП-команды были убраны из этого списка из соображений безопасности.</p>
     </blockquote>
 
-    <h2>Экономика и развлечения</h2>
+    <!-- 6. ЭКОНОМИКА И СЕМЬЯ -->
+    <h2>Экономика и семья</h2>
+    
+    <h3 class="command-section-title">Финансы и работа</h3>
     <ul class="commands-list">
-        <li><code>/balance</code> или <code>/баланс</code>, <code>мой баланс</code>, <code>фунтис баланс</code> — Баланс монет</li>
-        <li><code>/daily</code> или <code>/ежедневно</code>, <code>фунтис ежедневно</code> — Ежедневный бонус (требуется подписка на канал)</li>
-        <li><code>/transfer @username сумма</code> или <code>перевод @username сумма</code> — Перевод денег</li>
-        <li><code>работать</code> или <code>/работать</code> — Заработать монеты в мини-игре</li>
+        <li><code>/balance</code> — Проверить текущий баланс монет</li>
+        <li><code>/daily</code> — Получить ежедневный бонус</li>
+        <li><code>/transfer @username</code> — Перевести монеты другому игроку</li>
+        <li><code>работать</code> — Заработать деньги в мини-игре</li>
     </ul>
 
-    <h2>Семья и дети</h2>
+    <h3 class="command-section-title">Бракосочетание</h3>
     <ul class="commands-list">
-        <li><code>мои дети</code> или <code>/my_children</code> — Список ваших детей в текущей группе</li>
-        <li><code>дети</code> или <code>/children</code> — Список всех детей в группе (с пагинацией)</li>
-        <li><code>сдать в детдом</code> или <code>избавиться</code> — Сдать ребенка в детдом за монеты</li>
-        <li><code>детский магазин</code> или <code>/детмагазин</code>, <code>/магазиндетей</code>, иные формы — Детский магазин вещей для прокачки уровня ребёнка</li>
-        <li><code>купить ребенку номер предмет</code> — Купить предмет ребёнку по номеру из списка детей.</li>
-        <li><code>/propose @username</code> или <code>брак @username</code>, <code>+брак @username</code> — Предложить брак пользователю</li>
-        <li><code>/divorce</code> или <code>развод</code>, <code>-брак</code> — Расторгнуть брак</li>
-        <li><code>/family</code> или <code>семья</code>, <code>мой брак</code> — Показать информацию о своем браке</li>
-        <li><code>/браки</code> или <code>браки</code> — Список всех браков в группе</li>
+        <li><code>/propose @username</code> — Сделать предложение руки и сердца</li>
+        <li><code>/divorce</code> — Подать на развод и расторгнуть брак</li>
+        <li><code>/family</code> — Информация о вашем текущем браке</li>
+        <li><code>/браки</code> — Список всех официальных браков группы</li>
     </ul>
-    
-    <h2>Игры и интерактив</h2>
+
+    <h3 class="command-section-title">Дети и уход за ними</h3>
     <ul class="commands-list">
-        <li><code>/casino сумма</code> или <code>казино сумма</code>, <code>фунтис казино сумма</code> — Казино (ставка от 100 до 10000, кулдаун 10 мин)</li>
-        <li><code>/roulette сумма цвет/число</code> или <code>рулетка сумма цвет/число</code> — Рулетка</li>
-        <li><code>/dice сумма число</code> или <code>кубик сумма число</code> — Кинуть кубик (ставка на число от 1 до 6)</li>
-        <li><code>/машины</code> или <code>машины</code>, <code>фунтис машины</code> — Показать список ваших автомобилей</li>
-        <li><code>/выбитьмашину</code> или <code>выбитьмашину</code>, <code>фунтис выбитьмашину</code> — Получить новый автомобиль (раз в день)</li>
-        <li><code>/выбратьмашину_ID</code> — Выбрать конкретный автомобиль как основной</li>
-        <li><code>/улучшитьмашину</code> или <code>улучшитьмашину</code>, <code>фунтис улучшитьмашину</code> — Улучшить выбранный автомобиль (раз в час)</li>
-        <li><code>/коллекция</code> или <code>коллекция</code> — Статистика вашей коллекции автомобилей</li>
-        <li><code>/автоклассы</code> или <code>автоклассы</code> — Информация о классах автомобилей</li>
-        <li><code>/продатьмашину_ID</code> — Продать указанный автомобиль</li>
-        <li><code>/гонка [сумма]</code> или <code>гонка [сумма]</code> — Вызвать на гонку в группе (можно с ставкой)</li>
-        <li><code>/ship</code> или <code>шипперим</code> — "Свести" двух случайных пользователей в группе</li>
-        <li><code>/who фраза</code> или <code>/фунтискто</code>, <code>Фунтис кто фраза</code> — Приписать фразу случайному пользователю ("Кто...")</li>
-        <li><code>Фунтис когда фраза</code> или <code>фунтыс когда фраза</code> — Предсказать дату события</li>
-        <li><code>Фунтис шанс фраза</code> или <code>фунтыс шанс фраза</code>, <code>.инфа фраза</code> — Рандомный шанс события</li>
-        <li><code>/random</code> или <code>/рандом</code> — Случайный факт о случайном пользователе</li>
-        <li><code>/compliment @username</code> или <code>комплимент @username</code> — Сделать комплимент</li>
-        <li><code>/truth</code> или <code>правда [тема]</code> — Задать вопрос "правда" для игры</li>
-        <li><code>/dare</code> или <code>действие [тема]</code> — Предложить "действие" для игры</li>
-        <li><code>/joke</code> или <code>шутка [тема]</code> — Рассказать шутку</li>
-        <li><code>/fact</code> или <code>факт [тема]</code> — Интересный факт</li>
-        <li><code>/quiz [тема]</code> или <code>викторина [тема]</code> — Сгенерировать вопрос для викторины</li>
-        <li><code>/rps камень/ножницы/бумага</code> или <code>/кнб</code> — Камень-Ножницы-Бумага</li>
-        <li><code>/event</code> — Запустить ежедневный ивент в группе или показать уже запущенную задачу дня</li>
-        <li><code>/event ответ</code> — Ответить на задачу дня; первый правильный ответ получает награду монетами</li>
-        <li><code>/card дроп</code> — Получить случайную карточку; доступно раз в 6 часов</li>
-        <li><code>/card коллекция</code> — Показать все ваши карточки и количество повторов</li>
-        <li><code>/card обмен @username номер</code> — Предложить обмен карточкой с другим пользователем</li>
-        <li><code>/card набор</code> — Показать прогресс по наборам карточек и каких карт не хватает до завершения</li>
-        <li><code>/card продать номер</code> — Продать карточку за монеты</li>
-        <li><code>/дуэль @username</code> — Вызвать пользователя на дуэль</li>
-        <li><code>/дуэлистата</code> — Статистика ваших дуэлей</li>
-        <li><code>/iq</code> — Испытать удачу и изменить свой IQ в чате <span class="new-badge">NEW</span></li>
-        <li><code>/iqtop</code> — Топ пользователей в группе по айкью <span class="new-badge">NEW</span></li>
-        <li><code>/iqstats</code> — Статистика айкью пользователя <span class="new-badge">NEW</span></li>
+        <li><code>мои дети</code> — Список ваших детей в этом чате</li>
+        <li><code>дети</code> — Глобальный список всех детей группы</li>
+        <li><code>сдать в детдом</code> — Отказаться от ребенка в обмен на монеты</li>
+        <li><code>детский магазин</code> — Купить вещи для прокачки уровня ребёнка</li>
+        <li><code>купить ребенку</code> — Приобрести вещь по ID из списка детей</li>
     </ul>
+
+    <!-- 7. ИГРЫ И АВТОМОБИЛИ -->
+    <h2>Игры и развлечения</h2>
     
+    <h3 class="command-section-title">Азартные игры</h3>
+    <ul class="commands-list">
+        <li><code>/casino сумма</code> — Ставка в классическом казино</li>
+        <li><code>/roulette сумма</code> — Игра в рулетку (цвет или число)</li>
+        <li><code>/dice сумма</code> — Ставка на грань кубика (от 1 до 6)</li>
+        <li><code>/дуэль @username</code> — Вызвать оппонента на дуэль</li>
+        <li><code>/дуэлистата</code> — Посмотреть личную статистику дуэлей</li>
+    </ul>
+
+    <h3 class="command-section-title">Интерактивный Гараж (Авто)</h3>
+    <ul class="commands-list">
+        <li><code>/машины</code> — Список вашего автопарка</li>
+        <li><code>/выбитьмашину</code> — Испытать удачу в ежедневном авто-дропе</li>
+        <li><code>/выбратьмашину_ID</code> — Установить основное авто</li>
+        <li><code>/улучшитьмашину</code> — Прокачать характеристики текущего авто</li>
+        <li><code>/коллекция</code> — Прогресс и статистика автоколлекции</li>
+        <li><code>/автоклассы</code> — Информация о существующих классах машин</li>
+        <li><code>/продатьмашину_ID</code> — Продать транспортное средство системе</li>
+        <li><code>/гонка [сумма]</code> — Вызвать участника чата на заезд</li>
+    </ul>
+
+    <h3 class="command-section-title">Генераторы и предсказания</h3>
+    <ul class="commands-list">
+        <li><code>/ship</code> — Случайным образом свести пару в чате</li>
+        <li><code>/who фраза</code> — Рандомно выбрать «виновника» указанной фразы</li>
+        <li><code>Фунтис когда</code> — Сгенерировать дату для события</li>
+        <li><code>Фунтис шанс</code> — Рассчитать вероятность указанного события</li>
+        <li><code>/random</code> — Выдать случайный факт о случайном участнике</li>
+    </ul>
+
+    <h3 class="command-section-title">Иигры со словами</h3>
+    <ul class="commands-list">
+        <li><code>/truth</code> / <code>/dare</code> — Игра «Правда или Действие»</li>
+        <li><code>/joke</code> — Бот расскажет случайную шутку</li>
+        <li><code>/fact</code> — Интересный научно-популярный факт</li>
+        <li><code>/quiz</code> — Запустить викторину по выбранной теме</li>
+        <li><code>/rps</code> — Сыграть в «Камень, Ножницы, Бумага»</li>
+    </ul>
+
+    <h3 class="command-section-title">Ежедневные ивенты</h3>
+    <ul class="commands-list">
+        <li><code>/event</code> — Посмотреть или активировать задачу дня</li>
+        <li><code>/event ответ</code> — Отправить решение ивента на проверку</li>
+    </ul>
+
+    <h3 class="command-section-title">Коллекционные карточки</h3>
+    <ul class="commands-list">
+        <li><code>/card дроп</code> — Получить бесплатную карту (раз в 6 часов)</li>
+        <li><code>/card коллекция</code> — Список имеющихся карт и повторов</li>
+        <li><code>/card обмен</code> — Предложить безопасный обмен картами</li>
+        <li><code>/card набор</code> — Посмотреть прогресс завершения сетов</li>
+        <li><code>/card продать</code> — Продать карту и выручить монеты</li>
+    </ul>
+
+    <h3 class="command-section-title">Измерение IQ</h3>
+    <ul class="commands-list">
+        <li><code>/iq</code> — Изменить свой текущий показатель IQ <span class="new-badge">NEW</span></li>
+        <li><code>/iqtop</code> — Рейтинг самых умных участников чата <span class="new-badge">NEW</span></li>
+        <li><code>/iqstats</code> — Подробный график вашего интеллекта <span class="new-badge">NEW</span></li>
+    </ul>
+
+    <!-- 8. СИСТЕМНЫЕ КАТЕГОРИИ -->
     <h2>Кланы</h2>
+    <h3 class="command-section-title">Управление кланом</h3>
     <ul class="commands-list">
-        <li><code>/clan создать название</code> — Создать клан в группе за монеты</li>
-        <li><code>/clan пригласить @username</code> — Создать приглашение в ваш клан для пользователя</li>
-        <li><code>/clan вступить код</code> — Вступить в клан по коду приглашения</li>
-        <li><code>/clan удалить</code> или <code>/clan распустить</code> — Удалить свой клан без возврата монет; доступно только создателю клана</li>
-        <li><code>/clan топ</code> — Рейтинг кланов группы по сумме монет и сообщений участников</li>
+        <li><code>/clan создать</code> — Основать собственный клан в группе за монеты</li>
+        <li><code>/clan пригласить</code> — Выслать инвайт-код пользователю</li>
+        <li><code>/clan вступить</code> — Принять приглашение по коду</li>
+        <li><code>/clan удалить</code> — Полное расформирование (без возврата средств)</li>
+        <li><code>/clan топ</code> — Глобальный рейтинг кланов по активности</li>
     </ul>
 
     <h2>Доступные достижения</h2>
+    <h3 class="command-section-title">Игровые ачивки</h3>
     <ul class="commands-list">
-        <li><code>Полный набор: название набора</code> — Выдаётся автоматически за сбор всех карточек конкретного набора</li>
-        <li><code>Полная коллекция карточек</code> — Выдаётся автоматически за сбор всех коллекционных карточек</li>
-        <li><code>Быстрый ум</code> — Выдаётся автоматически за 5 первых правильных ответов на ежедневные ивенты</li>
-        <li><code>Знаток ивентов</code> — Выдаётся автоматически за 15 первых правильных ответов на ежедневные ивенты</li>
-        <li><code>Легенда ивентов</code> — Выдаётся автоматически за 35 первых правильных ответов на ежедневные ивенты</li>
-        <li><code>Молчун</code> — Выдаётся автоматически, если пользователь не писал в чате 7 дней</li>
-        <li><code>Миллионер</code> — Выдаётся автоматически за баланс от 1 000 000 монет</li>
-        <li><code>Сват</code> — Выдаётся автоматически за создание 10 браков в чате</li>
-        <li><code>Бессмертный</code> — Выдаётся автоматически за 5 побед в дуэлях подряд</li>
-        <li><code>Коллекционер</code> — Выдаётся автоматически за сбор всех автомобилей</li>
+        <li><code>Полный набор</code> — Сбор всех карточек определенного сета</li>
+        <li><code>Полная коллекция</code> — Сбор абсолютно всех карт в игре</li>
+        <li><code>Быстрый ум</code> / <code>Знаток</code> / <code>Легенда</code> — За победы в ежедневных ивентах</li>
+        <li><code>Молчун</code> — Дается за полное отсутствие сообщений в течение 7 дней</li>
+        <li><code>Миллионер</code> — Накопить на балансе более 1 000 000 монет</li>
+        <li><code>Сват</code> — Успешно сосватать и поженить 10 пар в чате</li>
+        <li><code>Бессмертный</code> — Одержать 5 чистых побед в дуэлях подряд</li>
+        <li><code>Коллекционер</code> — Собрать полный гараж автомобилей</li>
     </ul>
     
     <h2>Inline-режим</h2>
+    <h3 class="command-section-title">Команды в любом чате</h3>
     <ul class="commands-list">
-        <li><code>@funtys_moderator_bot [текст]</code> — Сгенерировать текст на любую тему</li>
-        <li><code>@funtys_moderator_bot рп [команда]</code> — Отправить предложение RP-действия (например, <code>@funtys_moderator_bot рп обнять</code>)</li>
-    </ul><br><br>
+        <li><code>@funtys_moderator_bot текст</code> — Генерация ИИ-текста «на лету»</li>
+        <li><code>@funtys_moderator_bot рп</code> — Быстрый запуск RP-действия через инлайн</li>
+    </ul>
 
-    <h2><strong>Как добавить бота в чат</strong></h2><br>
+    <br><hr><br>
+
+    <h2>Как добавить бота в чат</h2>
     <ul class="commands-list">
-        <li>Нажмите на название чата вверху </li><br>
-        <li>Выберите <code>Добавить участников</code> </li><br>
-        <li>Найдите <code>@funtys_moderator_bot</code> </li><br>
-        <li>Выдайте боту права администратора для полного функционала</li>
-    </ul><br><br>
+        <li>Нажмите на название чата вверху</li>
+        <li>Выберите пункт «Добавить участников»</li>
+        <li>Введите в поиске никнейм <a href="https://t.me/funtys_moderator_bot" target="_blank" class="bot-link">@funtys_moderator_bot</a></li>
+        <li>Выдайте боту права администратора для работы модерации</li>
+    </ul>
 
     <div class="footer">
         <div class="footer-line">
-            <img src="https://api.iconify.design/lucide/megaphone.svg?color=%2357606a" width="14" height="14" alt="">
-            Канал: <a href="https://t.me/fulias_team" target="_blank">@fulias_team</a>
+            Канал: &nbsp;<a href="https://t.me/fulias_team" target="_blank">@fulias_team</a>
         </div>
         <div class="footer-line">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-            </svg>
-            Поддержка: <code style="background: none; padding: 0;">/support</code>
+            Тех. поддержка: &nbsp;<a href="https://t.me/funtys_moderator_bot?start=support" target="_blank" class="bot-link">/support</a>
         </div>
         <div class="footer-line">
-            <img src="https://api.iconify.design/lucide/circle-help.svg?color=%2357606a" width="14" height="14" alt="">
-            Актуальная версия бота: <strong>@funtys_moderator_bot</strong>
+            Версия бота: &nbsp;<a href="https://t.me/funtys_moderator_bot" target="_blank" class="bot-link" style="font-weight: 700;">@funtys_moderator_bot</a>
         </div>
     </div>
 </div>
@@ -530,9 +709,10 @@
         const searchCountSpan = document.getElementById('searchCount');
         const allLists = document.querySelectorAll('.commands-list');
         const tocContainer = document.getElementById('tocList');
-        const headings = Array.from(document.querySelectorAll('.markdown-body h2'));
         
-        headings.forEach((heading, idx) => {
+        const subHeadings = Array.from(document.querySelectorAll('.markdown-body h3'));
+        
+        subHeadings.forEach((heading, idx) => {
             if (!heading.id) {
                 heading.id = `section-${idx}`;
             }
@@ -550,8 +730,10 @@
             if (query === '') {
                 allLists.forEach(list => {
                     list.classList.remove('hidden');
-                });
-                allLists.forEach(list => {
+                    if(list.previousElementSibling && list.previousElementSibling.classList.contains('command-section-title')) {
+                        list.previousElementSibling.classList.remove('hidden');
+                    }
+                    
                     const items = list.querySelectorAll('li');
                     items.forEach(item => {
                         item.style.display = '';
@@ -571,6 +753,7 @@
             allLists.forEach(list => {
                 let hasVisibleInList = false;
                 const itemsInList = Array.from(list.querySelectorAll('li'));
+                
                 itemsInList.forEach(li => {
                     const liText = li.textContent.toLowerCase();
                     const matches = liText.includes(query);
@@ -583,10 +766,18 @@
                         li.style.display = 'none';
                     }
                 });
+                
+                const h3Title = list.previousElementSibling;
                 if (hasVisibleInList) {
                     list.classList.remove('hidden');
+                    if(h3Title && h3Title.classList.contains('command-section-title')) {
+                        h3Title.classList.remove('hidden');
+                    }
                 } else {
                     list.classList.add('hidden');
+                    if(h3Title && h3Title.classList.contains('command-section-title')) {
+                        h3Title.classList.add('hidden');
+                    }
                 }
             });
             
@@ -596,59 +787,21 @@
         function highlightText(element, query) {
             const originalHtml = element.innerHTML;
             if (originalHtml.includes('command-highlight')) return;
-            const textNodes = [];
-            const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, {
-                acceptNode: function(node) {
-                    if (node.parentElement && (node.parentElement.tagName === 'CODE' || node.parentElement.classList?.contains('command-highlight'))) {
-                        return NodeFilter.FILTER_SKIP;
-                    }
-                    return NodeFilter.FILTER_ACCEPT;
-                }
-            });
-            while(walker.nextNode()) {
-                textNodes.push(walker.currentNode);
+            element.innerHTML = originalHtml.replace(/<span class="command-highlight">([\s\S]*?)<\/span>/gi, '$1');
+            const innerHTML = element.innerHTML;
+            const index = innerHTML.toLowerCase().indexOf(query);
+            if (index >= 0) {
+                element.innerHTML = innerHTML.substring(0, index) + 
+                    "<span class='command-highlight'>" + innerHTML.substring(index, index + query.length) + "</span>" + 
+                    innerHTML.substring(index + query.length);
             }
-            
-            textNodes.forEach(node => {
-                const text = node.nodeValue;
-                const lowerText = text.toLowerCase();
-                let index = lowerText.indexOf(query);
-                
-                if (index >= 0) {
-                    const fragment = document.createDocumentFragment();
-                    let lastIndex = 0;
-                    
-                    while (index >= 0) {
-                        if (index > lastIndex) {
-                            fragment.appendChild(document.createTextNode(text.substring(lastIndex, index)));
-                        }
-                        
-                        const span = document.createElement('span');
-                        span.className = 'command-highlight';
-                        span.textContent = text.substring(index, index + query.length);
-                        fragment.appendChild(span);
-                        
-                        lastIndex = index + query.length;
-                        index = lowerText.indexOf(query, lastIndex);
-                    }
-                    
-                    if (lastIndex < text.length) {
-                        fragment.appendChild(document.createTextNode(text.substring(lastIndex)));
-                    }
-                    
-                    node.parentNode.replaceChild(fragment, node);
-                }
-            });
         }
         
         searchInput.addEventListener('input', updateSearch);
-        clearBtn.addEventListener('click', function() {
+        clearBtn.addEventListener('click', () => {
             searchInput.value = '';
             updateSearch();
-            searchInput.focus();
         });
-        
-        searchCountSpan.textContent = `Все команды`;
     })();
 </script>
 </body>
