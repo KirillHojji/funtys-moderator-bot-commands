@@ -15,47 +15,51 @@
 
         /* Базовые переменные для светлой темы */
         :root {
-            --bg-page: #f8fafc;
+            --bg-page: #f6f8fb;
             --bg-card: #ffffff;
-            --text-main: #1e293b;
+            --text-main: #334155;
             --text-muted: #64748b;
             --text-title: #0f172a;
             --border-color: #e2e8f0;
             --accent-color: #2563eb;
             --accent-hover: #1d4ed8;
             --code-bg: #f1f5f9;
-            --code-color: #2563eb;
+            --code-color: #1d4ed8;
             --search-bg: #f8fafc;
             --blockquote-bg: #f8fafc;
             --blockquote-border: #cbd5e1;
             --highlight-bg: #fef08a;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --badge-bg: #ef4444;
+            --badge-text: #ffffff;
+            --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
         }
 
         /* Автоматическая темная тема на основе системных настроек */
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg-page: #0f172a;
-                --bg-card: #1e293b;
-                --text-main: #cbd5e1;
-                --text-muted: #94a3b8;
+                --bg-page: #07111f;
+                --bg-card: #0f1b2d;
+                --text-main: #d8e2ef;
+                --text-muted: #97a6ba;
                 --text-title: #f8fafc;
-                --border-color: #334155;
-                --accent-color: #60a5fa;
-                --accent-hover: #93c5fd;
-                --code-bg: #1e293b;
-                --code-color: #60a5fa;
-                --search-bg: #0f172a;
-                --blockquote-bg: #0f172a;
-                --blockquote-border: #475569;
-                --highlight-bg: #854d0e;
-                --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+                --border-color: #24354d;
+                --accent-color: #7dd3fc;
+                --accent-hover: #bae6fd;
+                --code-bg: #111f34;
+                --code-color: #93c5fd;
+                --search-bg: #0b1626;
+                --blockquote-bg: #0b1626;
+                --blockquote-border: #38516f;
+                --highlight-bg: #92400e;
+                --badge-bg: #fb7185;
+                --badge-text: #450a0a;
+                --shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
             }
         }
 
         body {
             font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-page);
+            background: radial-gradient(circle at top, rgba(96, 165, 250, 0.13), transparent 34%), var(--bg-page);
             color: var(--text-main);
             line-height: 1.6;
             padding: 48px 16px;
@@ -63,11 +67,12 @@
         }
 
         .markdown-body {
-            max-width: 850px;
+            max-width: 900px;
             margin: 0 auto;
             background: var(--bg-card);
             padding: 40px;
-            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
             box-shadow: var(--shadow);
             transition: background 0.3s ease, box-shadow 0.3s ease;
         }
@@ -112,22 +117,26 @@
         }
 
         .markdown-body li {
+            position: relative;
             margin-bottom: 10px;
+            padding-left: 18px;
             font-size: 0.95rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
             color: var(--text-main);
         }
 
         .markdown-body li::before {
             content: "•";
+            position: absolute;
+            left: 0;
+            top: 0;
             color: var(--text-muted);
             font-weight: bold;
-            margin-right: 4px;
         }
 
         .markdown-body code {
+            display: inline-block;
+            max-width: 100%;
+            margin: 1px 2px;
             font-family: ui-monospace, 'SF Mono', 'Cascadia Code', monospace;
             font-size: 0.85em;
             background: var(--code-bg);
@@ -135,8 +144,9 @@
             border-radius: 6px;
             color: var(--code-color);
             font-weight: 500;
-            flex-shrink: 0;
             border: 1px solid var(--border-color);
+            overflow-wrap: anywhere;
+            vertical-align: baseline;
         }
 
         .markdown-body hr {
@@ -198,7 +208,7 @@
 
         #searchInput {
             width: 100%;
-            padding: 12px 40px 12px 42px;
+            padding: 12px 42px;
             font-size: 14px;
             border: 1px solid var(--border-color);
             border-radius: 8px;
@@ -211,24 +221,27 @@
 
         #searchInput:focus {
             border-color: var(--accent-color);
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+            box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.18);
         }
 
         .clear-search-btn {
             position: absolute;
-            right: 14px;
+            right: 12px;
             top: 50%;
+            width: 24px;
+            height: 24px;
             transform: translateY(-50%);
-            background: none;
+            background: transparent;
             border: none;
+            border-radius: 999px;
             cursor: pointer;
-            padding: 0;
+            padding: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.2s;
+            transition: opacity 0.2s, background 0.2s;
             color: var(--text-muted);
         }
 
@@ -238,7 +251,8 @@
         }
 
         .clear-search-btn:hover {
-            color: var(--text-main);
+            color: var(--text-title);
+            background: var(--code-bg);
         }
 
         .search-stats {
@@ -285,7 +299,8 @@
             text-decoration: underline;
         }
 
-        .commands-list.hidden, .command-section-title.hidden {
+        .commands-list.hidden,
+        .command-section-title.hidden {
             display: none;
         }
 
@@ -296,22 +311,25 @@
             color: var(--text-title);
         }
 
-        h2, h3 {
+        h2,
+        h3 {
             scroll-margin-top: 24px;
         }
 
         .new-badge {
             display: inline-flex;
             align-items: center;
-            background-color: #ef4444;
-            color: white;
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
             font-size: 0.6rem;
-            font-weight: 700;
+            font-weight: 800;
             padding: 2px 6px;
             border-radius: 6px;
             margin-left: 8px;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            vertical-align: middle;
+            white-space: nowrap;
         }
 
         .footer {
@@ -352,7 +370,7 @@
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
             <input type="text" id="searchInput" placeholder="Поиск по командам...">
-            <button id="clearSearchBtn" class="clear-search-btn">
+            <button id="clearSearchBtn" class="clear-search-btn" aria-label="Очистить поиск" type="button">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -385,6 +403,12 @@
         <li><code>бот</code> — Проверить статус работы бота и ИИ</li>
         <li><code>/newchat</code> — Очистить историю чата (в ЛС)</li>
         <li><code>/terms</code> — Условия использования</li>
+    </ul>
+
+    <h3 class="command-section-title">Капча и квиз в ЛС</h3>
+    <ul class="commands-list">
+        <li><code>/captcha ответ</code> — Отправить ответ на капчу или квиз в ЛС боту <span class="new-badge">NEW</span></li>
+        <li><code>ответ</code> — Отправить ответ на капчу или квиз обычным текстом в ЛС <span class="new-badge">NEW</span></li>
     </ul>
 
     <h3 class="command-section-title">Донаты и Поддержка</h3>
@@ -518,7 +542,6 @@
         <li><code>/guardian автоотклонение_ботов on</code> / <code>/guardian автоотклонение_ботов off</code> — Включить или выключить автоматическое отклонение ботов <span class="new-badge">NEW</span></li>
         <li><code>/добавитьвопрос Вопрос | Ответ1 | Ответ2 | Ответ3</code> — Добавить вопрос для квиза, первый ответ считается правильным <span class="new-badge">NEW</span></li>
         <li><code>/вопросы</code> — Показать список вопросов для квиза <span class="new-badge">NEW</span></li>
-        <li><code>/captcha ответ</code> — Отправить ответ на капчу или квиз в ЛС боту <span class="new-badge">NEW</span></li>
     </ul>
 
     <h3 class="command-section-title">Административное управление</h3>
@@ -599,7 +622,7 @@
     
     <h3 class="command-section-title">Азартные игры</h3>
     <ul class="commands-list">
-        <li><code>/casino сумма</code> — Sтавка в классическом казино</li>
+        <li><code>/casino сумма</code> — Ставка в классическом казино</li>
         <li><code>/roulette сумма</code> — Игра в рулетку (цвет или число)</li>
         <li><code>/dice сумма</code> — Ставка на грань кубика (от 1 до 6)</li>
         <li><code>/дуэль @username</code> — Вызвать оппонента на дуэль</li>
@@ -613,7 +636,7 @@
         <li><code>/выбратьмашину_ID</code> — Установить основное авто</li>
         <li><code>/улучшитьмашину</code> — Прокачать характеристики текущего авто</li>
         <li><code>/коллекция</code> — Прогресс и статистика автоколлекции</li>
-        <li><code>/автоклассы</code> — Информация о существующих классах машин</li>
+        <li><code>/автоклассы</code> — Информация о существующи�� классах машин</li>
         <li><code>/продатьмашину_ID</code> — Продать транспортное средство системе</li>
         <li><code>/гонка [сумма]</code> — Вызвать участника чата на заезд</li>
     </ul>
@@ -627,7 +650,7 @@
         <li><code>/random</code> — Выдать случайный факт о случайном участнике</li>
     </ul>
 
-    <h3 class="command-section-title">Иигры со словами</h3>
+    <h3 class="command-section-title">Игры со словами</h3>
     <ul class="commands-list">
         <li><code>/truth</code> / <code>/dare</code> — Игра «Правда или Действие»</li>
         <li><code>/joke</code> — Бот расскажет случайную шутку</li>
@@ -736,11 +759,12 @@
         function updateSearch() {
             const query = searchInput.value.trim().toLowerCase();
             let visibleCount = 0;
+            clearBtn.classList.toggle('visible', query !== '');
             
             if (query === '') {
                 allLists.forEach(list => {
                     list.classList.remove('hidden');
-                    if(list.previousElementSibling && list.previousElementSibling.classList.contains('command-section-title')) {
+                    if (list.previousElementSibling && list.previousElementSibling.classList.contains('command-section-title')) {
                         list.previousElementSibling.classList.remove('hidden');
                     }
                     
@@ -754,11 +778,8 @@
                     });
                 });
                 searchCountSpan.textContent = `Все команды`;
-                clearBtn.classList.remove('visible');
                 return;
             }
-            
-            clearBtn.classList.add('visible');
             
             allLists.forEach(list => {
                 let hasVisibleInList = false;
@@ -780,12 +801,12 @@
                 const h3Title = list.previousElementSibling;
                 if (hasVisibleInList) {
                     list.classList.remove('hidden');
-                    if(h3Title && h3Title.classList.contains('command-section-title')) {
+                    if (h3Title && h3Title.classList.contains('command-section-title')) {
                         h3Title.classList.remove('hidden');
                     }
                 } else {
                     list.classList.add('hidden');
-                    if(h3Title && h3Title.classList.contains('command-section-title')) {
+                    if (h3Title && h3Title.classList.contains('command-section-title')) {
                         h3Title.classList.add('hidden');
                     }
                 }
@@ -801,8 +822,8 @@
             const innerHTML = element.innerHTML;
             const index = innerHTML.toLowerCase().indexOf(query);
             if (index >= 0) {
-                element.innerHTML = innerHTML.substring(0, index) + 
-                    "<span class='command-highlight'>" + innerHTML.substring(index, index + query.length) + "</span>" + 
+                element.innerHTML = innerHTML.substring(0, index) +
+                    "<span class='command-highlight'>" + innerHTML.substring(index, index + query.length) + "</span>" +
                     innerHTML.substring(index + query.length);
             }
         }
@@ -811,6 +832,7 @@
         clearBtn.addEventListener('click', () => {
             searchInput.value = '';
             updateSearch();
+            searchInput.focus();
         });
     })();
 </script>
